@@ -1,0 +1,85 @@
+<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">KaMine</a>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li ng-class="{ active: isActive('/board')}"><a ng-href="#/board" translate>board</a></li>
+            <li ng-class="{ active: isActive('/chart')}"><a ng-href="#/chart" translate>chart</a></li>
+        </ul>
+        <div class="navbar-form navbar-right">
+            <div class="form-group">
+                <input type="text" placeholder="{{'key' | translate}}" class="form-control user-key" name="user-key" ng-model="user.key" ng-disabled="loader.active" ng-change=""/>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group short-input-group" style="width: 180px">
+                    <span class="input-group-btn">
+                        <a class="btn btn-default" ng-href="{{project.url}}">
+                            <i class="fa fa-external-link"></i>
+                        </a>
+                    </span>
+
+                    <input type="text" placeholder="{{'project' | translate}}" class="form-control project-name" name="project-name" ng-model="project.name" />
+
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li bindonce ng-repeat="project in projects" ng-class="{active: project.id==project.id}">
+                                <a ng-click="" bo-text="project.name"></a>
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group short-input-group" style="width: 180px">
+                    <span class="input-group-btn">
+                        <a class="btn btn-default" ng-href="{{sprint.url}}">
+                            <i class="fa fa-external-link"></i>
+                        </a>
+                    </span>
+
+                    <input type="text" placeholder="{{'sprint' | translate}}" class="form-control sprint-name" name="sprint-name" ng-model="models.sprint.name" />
+
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li bindonce ng-repeat="sprint in sprints" ng-class="{active: sprint.id==sprint.id}">
+                                <a ng-click="" bo-text="sprint.name"></a>
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">
+                        <i class="fa fa-refresh fa-lg" ng-class="{'fa-spin': loader.active}" ng-click=""></i>
+                    </button>
+                    
+                    <button type="button" class="btn btn-default">
+                        <i class="fa fa-cog fa-lg"></i>
+                    </button>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-globe fa-lg"></i>&nbsp;<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="switchLanguage('en')">English</a></li>
+                            <li><a ng-click="switchLanguage('fr')">Français</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

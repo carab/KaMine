@@ -1,0 +1,58 @@
+
+<div class="board">
+    <table class="board-table table table-bordered">
+        <thead>
+            <tr>
+                <th 
+                    ng-repeat="column in columns" 
+                    class="board-heading" 
+                    ng-class="column.name"
+                >{{column.name | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td 
+                    ng-repeat="column in columns" 
+                    class="board-column" 
+                    ng-class="column.name" 
+                    drop="column" drop-class="dropping-in-column"
+                >
+
+                    <div
+                        bindonce
+                        ng-repeat="story in stories | hasStatus:column.statutes"
+                        class="story well"
+                        drag="story" drag-class="dragging-story"
+                        ng-class="{'is-mine': story.isMine }"
+                        ng-click="isExtraVisible != isExtraVisible"
+                    >
+                        <div class="story-top">
+                            <a bo-href="story.url">#<span class="story-id" bo-text="story.id"></span></a>
+                            -
+                            <span class="story-subject" bo-text="story.subject"></span>
+                        </div>
+
+                        <div class="story-middle">
+                            <span class="story-priority" bo-text="story.priority"></span> - <span class="story-estimated-time" bo-text="story.estimatedTime"></span>h
+                        </div>
+
+                        <div class="story-bottom clearfix">
+                            <div class="story-icon">
+                                <i class="fa fa-warning fa-lg text-danger" ng-show="story.hasWarning"></i>
+                                <i class="fa fa-thumbs-up fa-lg text-success" ng-show="story.status == 'done'"></i>
+                                <i class="fa fa-thumbs-down fa-lg text-danger" ng-show="story.status == 'testko'"></i>
+                            </div>
+                            <div class="story-assignee" ng-text="story.assignee"></div>
+                        </div>
+
+                        <div class="story-extra" ng-show="isExtraVisible">
+                            <div class="story-description" bo-html="story.description"></div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

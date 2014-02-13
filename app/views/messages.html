@@ -1,0 +1,11 @@
+
+<div class="messages">
+    <div bindonce ng-repeat="message in messages" class="alert" bo-class="'alert-' + message.type">
+        <button type="button" class="close" ng-click="message.remove()">
+            &times;
+        </button>
+        <span class="alert-message" bo-html="message.text">
+
+        </span>
+    </div>
+</div>

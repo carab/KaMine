@@ -1,0 +1,13 @@
+{
+    "board": "Board",
+    "chart": "Chart",
+    "key": "Key",
+    "project": "Project",
+    "sprint": "Sprint",
+    "story": "Story",
+    "todo": "To do",
+    "inprogress": "In progress",
+    "totest": "To test",
+    "testing": "Testing",
+    "done": "Done"
+}

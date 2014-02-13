@@ -1,0 +1,13 @@
+{
+    "board": "Tableau de bord",
+    "chart": "Graphique",
+    "key": "Clé",
+    "project": "Projet",
+    "sprint": "Sprint",
+    "story": "Story",
+    "todo": "À faire",
+    "inprogress": "En cours",
+    "totest": "À tester",
+    "testing": "En test",
+    "done": "Fait"
+}
