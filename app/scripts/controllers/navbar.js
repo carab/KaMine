@@ -11,7 +11,10 @@ angular.module('kamineApp')
     };
 
     $scope.setUser = function () {
+      /*jshint camelcase: false */
       $http.defaults.headers.common['X-Redmine-API-Key'] = entities.user.api_key;
+      /*jshint camelcase: true */
+
       entities.user = User.get({ 'id': 'current' });
 
       collections.sprints = [];

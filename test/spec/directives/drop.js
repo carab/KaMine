@@ -13,8 +13,8 @@ describe('Directive: drop', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<drop></drop>');
+    /*/element = angular.element('<drop></drop>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the drop directive');
+    expect(element.text()).toBe('this is the drop directive');/**/
   }));
 });

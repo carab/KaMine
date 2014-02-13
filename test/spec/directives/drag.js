@@ -13,8 +13,8 @@ describe('Directive: drag', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<drag></drag>');
+    /*/element = angular.element('<drag></drag>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the drag directive');
+    expect(element.text()).toBe('this is the drag directive');/**/
   }));
 });
