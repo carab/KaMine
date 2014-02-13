@@ -5,7 +5,45 @@ A Redmine client to better work with Scrum Agile Method.
 
 WiP, still not functionnal.
 
-## Developpers
+Requirements
+------------
+
+### Client-side
+
+TODO: check which browser versions are compatible.
+
+### Server-side
+
+The targetted Redmine must allow [CORS](http://www.w3.org/TR/cors/).
+
+Thanks to [dontdrinkandroot](https://github.com/dontdrinkandroot/lightmine.js/tree/master#prerequisites) for solutions :
+
+#### Redmine < 2.0
+
+If you are running redmine on an Apache Webserver with the [Passenger Mod](https://www.phusionpassenger.com/) you can change the Vhost in the following way:
+
+* Enable mod_rewrite
+* Enable mod_headers
+* Add the following code to the Vhost:
+
+```
+RewriteEngine On                  
+RewriteCond %{REQUEST_METHOD} OPTIONS 
+RewriteRule ^(.*)$ $1 [R=200,L]
+
+Header always set Access-Control-Allow-Origin "*"                   
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+Header always set Access-Control-Allow-Headers "origin, content-type, accept, authorization, x-requested-with, x-redmine-api-key"
+```
+
+If this doesn't work, try the solution suggested [here](http://stackoverflow.com/questions/12194371/how-to-add-response-header-in-vhost-or-passeneger-ruby).
+
+#### Redmine >= 2.0
+
+There is a plugin available [here](http://www.redmine.org/plugins/redmine_cors) ([GitHub](https://github.com/mavimo/redmine_cors)) that provides the headers as needed.
+
+Developpers
+-----------
 
 ### Install project
 
