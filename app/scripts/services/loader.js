@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kamineApp')
-  .service('Loader', function Loader() {
+  .factory('Loader', function () {
     var service = {
       active: false,
       enabled: true,

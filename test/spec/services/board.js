@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Board', function () {
+describe('Service: board', function () {
 
   // load the service's module
   beforeEach(module('kamineApp'));
 
   // instantiate service
-  var Board;
-  beforeEach(inject(function (_Board_) {
-    Board = _Board_;
+  var board;
+  beforeEach(inject(function (_board_) {
+    board = _board_;
   }));
 
   it('should do something', function () {
-    expect(!!Board).toBe(true);
+    expect(!!board).toBe(true);
   });
 
 });

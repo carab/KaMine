@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: config', function () {
+describe('Service: entities', function () {
 
   // load the service's module
   beforeEach(module('kamineApp'));
 
   // instantiate service
-  var config;
-  beforeEach(inject(function (_config_) {
-    config = _config_;
+  var entities;
+  beforeEach(inject(function (_entities_) {
+    entities = _entities_;
   }));
 
   it('should do something', function () {
-    expect(!!config).toBe(true);
+    expect(!!entities).toBe(true);
   });
 
 });

@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Api', function () {
+describe('Service: User', function () {
 
   // load the service's module
   beforeEach(module('kamineApp'));
 
   // instantiate service
-  var Api;
-  beforeEach(inject(function (_Api_) {
-    Api = _Api_;
+  var User;
+  beforeEach(inject(function (_User_) {
+    User = _User_;
   }));
 
   it('should do something', function () {
-    expect(!!Api).toBe(true);
+    expect(!!User).toBe(true);
   });
 
 });

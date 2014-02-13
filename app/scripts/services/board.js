@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kamineApp')
-  .service('Board', function Board() {
+  .service('board', function () {
     this.columns = [{
         name: 'todo',
         statutes: ['todo', 'testko']

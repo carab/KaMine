@@ -9,5 +9,12 @@
     "inprogress": "In progress",
     "totest": "To test",
     "testing": "Testing",
-    "done": "Done"
+    "done": "Done",
+    "goProject": "Go to project",
+    "switchProject": "Switch project",
+    "goSprint": "Go to sprint",
+    "switchSprint": "Switch sprint",
+    "refreshStories": "Refresh stories",
+    "editConfiguration": "Edit configuration",
+    "switchLanguage": "Switch language"
 }

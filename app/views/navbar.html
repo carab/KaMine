@@ -1,4 +1,4 @@
-<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+<div ng-controller="NavbarCtrl" class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <div class="navbar-header">
         <a class="navbar-brand" href="/">KaMine</a>
     </div>
@@ -9,26 +9,26 @@
         </ul>
         <div class="navbar-form navbar-right">
             <div class="form-group">
-                <input type="text" placeholder="{{'key' | translate}}" class="form-control user-key" name="user-key" ng-model="user.key" ng-disabled="loader.active" ng-change=""/>
+                <input type="text" placeholder="{{'key' | translate}}" class="form-control user-key" name="user-key" ng-model="entities.user.api_key" ng-disabled="loader.active" ng-change="setUser()"/>
             </div>
 
             <div class="form-group">
-                <div class="input-group short-input-group" style="width: 180px">
+                <div class="input-group short-input-group">
                     <span class="input-group-btn">
-                        <a class="btn btn-default" ng-href="{{project.url}}">
+                        <a class="btn btn-default" ng-href="{{entities.project.url}}" title="{{'goProject' | translate}}">
                             <i class="fa fa-external-link"></i>
                         </a>
                     </span>
 
-                    <input type="text" placeholder="{{'project' | translate}}" class="form-control project-name" name="project-name" ng-model="project.name" />
+                    <input type="text" placeholder="{{'project' | translate}}" class="form-control project-name" name="project-name" ng-model="entities.project.name" />
 
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{{'switchProject' | translate}}">
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li bindonce ng-repeat="project in projects" ng-class="{active: project.id==project.id}">
-                                <a ng-click="" bo-text="project.name"></a>
+                            <li bindonce ng-repeat="project in collections.projects" ng-class="{active: project.id==entities.project.id}">
+                                <a ng-click="setProject(project)">{{project.name}}</a>
                             </li>
                         </ul>
                     </span>
@@ -36,22 +36,22 @@
             </div>
 
             <div class="form-group">
-                <div class="input-group short-input-group" style="width: 180px">
+                <div class="input-group short-input-group">
                     <span class="input-group-btn">
-                        <a class="btn btn-default" ng-href="{{sprint.url}}">
+                        <a class="btn btn-default" ng-href="{{entities.sprint.url}}" title="{{'goSprint' | translate}}">
                             <i class="fa fa-external-link"></i>
                         </a>
                     </span>
 
-                    <input type="text" placeholder="{{'sprint' | translate}}" class="form-control sprint-name" name="sprint-name" ng-model="models.sprint.name" />
+                    <input type="text" placeholder="{{'sprint' | translate}}" class="form-control sprint-title" name="sprint-title" ng-model="entities.sprint.title" />
 
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{{'switchSprint' | translate}}">
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li bindonce ng-repeat="sprint in sprints" ng-class="{active: sprint.id==sprint.id}">
-                                <a ng-click="" bo-text="sprint.name"></a>
+                            <li bindonce ng-repeat="sprint in collections.sprints" ng-class="{active: sprint.id==entities.sprint.id}">
+                                <a ng-click="setSprint(sprint)">{{sprint.title}}</a>
                             </li>
                         </ul>
                     </span>
@@ -60,21 +60,53 @@
 
             <div class="form-group">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default">
-                        <i class="fa fa-refresh fa-lg" ng-class="{'fa-spin': loader.active}" ng-click=""></i>
+                    <button type="button" 
+                        class="btn btn-default"
+                        ng-mouseenter="overRefresh = true"
+                        ng-mouseleave="overRefresh = false"
+                         title="{{'refreshStories' | translate}}"
+                    >
+                        <i 
+                            class="fa fa-refresh fa-lg" 
+                            ng-class="{'fa-spin': overRefresh}" 
+                            ng-click="" 
+                        ></i>
                     </button>
                     
-                    <button type="button" class="btn btn-default">
-                        <i class="fa fa-cog fa-lg"></i>
+                    <button type="button" 
+                        class="btn btn-default"
+                        ng-mouseenter="overGear = true"
+                        ng-mouseleave="overGear = false"
+                         title="{{'editConfiguration' | translate}}"
+                    >
+                        <i 
+                            class="fa fa-gear fa-lg"
+                            ng-class="{'fa-spin': overGear}" 
+                            ng-click="" 
+                        ></i>
                     </button>
 
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-globe fa-lg"></i>&nbsp;<span class="caret"></span>
+                        <button type="button" 
+                            class="btn btn-default dropdown-toggle" 
+                            data-toggle="dropdown"
+                            ng-mouseenter="overGlobe = true"
+                            ng-mouseleave="overGlobe = false"
+                             title="{{'switchLanguage' | translate}}"
+                        >
+                            <i 
+                                class="fa fa-globe fa-lg"
+                                ng-class="{'fa-spin': overGlobe}" 
+                                ng-click="" 
+                            ></i>&nbsp;<span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a ng-click="switchLanguage('en')">English</a></li>
-                            <li><a ng-click="switchLanguage('fr')">Français</a></li>
+                            <li ng-class="{active: 'en'==translate.uses()}">
+                                <a ng-click="translate.uses('en')">English</a>
+                            </li>
+                            <li ng-class="{active: 'fr'==translate.uses()}">
+                                <a ng-click="translate.uses('fr')">Français</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

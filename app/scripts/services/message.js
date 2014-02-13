@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kamineApp')
-  .service('Message', function message($timeout) {
+  .factory('Message', function ($timeout) {
     var service = {
       messages: {},
       disabled: false,

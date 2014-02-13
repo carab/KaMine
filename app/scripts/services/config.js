@@ -1,16 +1,21 @@
 'use strict';
 
 angular.module('kamineApp')
-  .service('Config', function Config() {
-    this.defaults = {
+  .factory('config', function () {
+    var defaults = {
       url: 'https://redmine-projets.smile.fr/',
-      maxItems: 0,
+      limit: 400,
+      projects: {
+        sort: 'id'
+      },
       sprints: {
         tracker: 4, // Feature
+        sort: 'id',
         name: 'Sprint #(.+)'
       },
       stories: {
         tracker: 2, // Change
+        sort: 'id',
         title: '(.*)'
       },
       statutes: {
@@ -29,4 +34,6 @@ angular.module('kamineApp')
         immediate: 7 //Immediate
       },
     };
+
+    return defaults;
   });
