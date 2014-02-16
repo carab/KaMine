@@ -6,7 +6,8 @@ angular.module('kamineApp', [
   'ngSanitize',
   'ngRoute',
   'pasvaz.bindonce',
-  'pascalprecht.translate'
+  'pascalprecht.translate',
+  'LocalStorageModule'
 ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -21,11 +21,9 @@
 
                     <div
                         bindonce
-                        ng-repeat="story in stories | hasStatus:column.statutes"
+                        ng-repeat="story in collections.stories | withStatus:column.statutes"
                         class="story well"
                         drag="story" drag-class="dragging-story"
-                        ng-class="{'is-mine': story.isMine }"
-                        ng-click="isExtraVisible != isExtraVisible"
                     >
                         <div class="story-top">
                             <a bo-href="story.url">#<span class="story-id" bo-text="story.id"></span></a>
@@ -34,20 +32,15 @@
                         </div>
 
                         <div class="story-middle">
-                            <span class="story-priority" bo-text="story.priority"></span> - <span class="story-estimated-time" bo-text="story.estimatedTime"></span>h
+                            <span class="story-priority" bo-text="story.priority.name"></span> - <span class="story-estimated-hours" bo-text="story.estimated_hours"></span>h
                         </div>
 
                         <div class="story-bottom clearfix">
                             <div class="story-icon">
-                                <i class="fa fa-warning fa-lg text-danger" ng-show="story.hasWarning"></i>
-                                <i class="fa fa-thumbs-up fa-lg text-success" ng-show="story.status == 'done'"></i>
-                                <i class="fa fa-thumbs-down fa-lg text-danger" ng-show="story.status == 'testko'"></i>
+                                <i class="fa fa-warning fa-lg text-danger" ng-show="story.spent_time > story.estimated_hours"></i>
+                                <i class="fa fa-thumbs-down fa-lg text-danger" ng-show="story | hasStatus:'testko'"></i>
                             </div>
-                            <div class="story-assignee" ng-text="story.assignee"></div>
-                        </div>
-
-                        <div class="story-extra" ng-show="isExtraVisible">
-                            <div class="story-description" bo-html="story.description"></div>
+                            <div class="story-assigned-to" ng-bind="story.assigned_to.name"></div>
                         </div>
                     </div>
 
