@@ -4,8 +4,8 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li ng-class="{ active: isActive('/board')}"><a ng-href="#/board" translate>board</a></li>
-            <li ng-class="{ active: isActive('/chart')}"><a ng-href="#/chart" translate>chart</a></li>
+            <li ng-class="{ active: isActive('/board') }"><a ng-href="#/board" translate>board</a></li>
+            <li ng-class="{ active: isActive('/chart') }"><a ng-href="#/chart" translate>chart</a></li>
         </ul>
         <div class="navbar-form navbar-right">
             <div class="form-group">
@@ -27,7 +27,7 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li bindonce ng-repeat="project in collections.projects" ng-class="{active: project.id==entities.project.id}">
+                            <li bindonce ng-repeat="project in collections.projects" ng-class="{ active: project.id==entities.project.id }">
                                 <a ng-click="setProject(project)">{{project.name}}</a>
                             </li>
                         </ul>
@@ -50,7 +50,7 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li bindonce ng-repeat="sprint in collections.sprints" ng-class="{active: sprint.id==entities.sprint.id}">
+                            <li bindonce ng-repeat="sprint in collections.sprints" ng-class="{ active: sprint.id==entities.sprint.id }">
                                 <a ng-click="setSprint(sprint)">{{sprint.title}}</a>
                             </li>
                         </ul>
@@ -62,50 +62,33 @@
                 <div class="btn-group">
                     <button type="button" 
                         class="btn btn-default"
-                        ng-mouseenter="overRefresh = true"
-                        ng-mouseleave="overRefresh = false"
-                         title="{{'refreshStories' | translate}}"
+                        title="{{'refreshStories' | translate}}"
                     >
-                        <i 
-                            class="fa fa-refresh fa-lg" 
-                            ng-class="{'fa-spin': overRefresh}" 
-                            ng-click="" 
-                        ></i>
+                        <i class="fa fa-refresh fa-lg" ng-click=""></i>
                     </button>
                     
                     <button type="button" 
                         class="btn btn-default"
-                        ng-mouseenter="overGear = true"
-                        ng-mouseleave="overGear = false"
-                         title="{{'editConfiguration' | translate}}"
+                        title="{{'editConfiguration' | translate}}"
                     >
-                        <i 
-                            class="fa fa-gear fa-lg"
-                            ng-class="{'fa-spin': overGear}" 
-                            ng-click="" 
-                        ></i>
+                        <i class="fa fa-gear fa-lg" ng-click=""></i>
                     </button>
 
                     <div class="btn-group">
                         <button type="button" 
                             class="btn btn-default dropdown-toggle" 
                             data-toggle="dropdown"
-                            ng-mouseenter="overGlobe = true"
-                            ng-mouseleave="overGlobe = false"
-                             title="{{'switchLanguage' | translate}}"
+                            title="{{'switchLanguage' | translate}}"
                         >
-                            <i 
-                                class="fa fa-globe fa-lg"
-                                ng-class="{'fa-spin': overGlobe}" 
-                                ng-click="" 
-                            ></i>&nbsp;<span class="caret"></span>
+                            <i class="fa fa-globe fa-lg" ng-click=""></i>&nbsp;<span class="caret"></span>
                         </button>
+
                         <ul class="dropdown-menu">
-                            <li ng-class="{active: 'en'==translate.uses()}">
-                                <a ng-click="translate.uses('en')">English</a>
+                            <li ng-class="{ active: 'en'==translate.use() }">
+                                <a ng-click="translate.use('en')">English</a>
                             </li>
-                            <li ng-class="{active: 'fr'==translate.uses()}">
-                                <a ng-click="translate.uses('fr')">Français</a>
+                            <li ng-class="{ active: 'fr'==translate.use() }">
+                                <a ng-click="translate.use('fr')">Français</a>
                             </li>
                         </ul>
                     </div>
