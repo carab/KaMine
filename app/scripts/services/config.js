@@ -64,6 +64,32 @@ angular.module('kamineApp')
     };
 
     /**
+     * Retrieve a priority by its id
+     * @param  {integer} id
+     * @return {object}      
+     */
+    config.getPriorityById = function (id) {
+      for (var priority in config.priorities) {
+        if (config.priorities[priority].id === id) {
+          return config.priorities[priority];
+        }
+      }
+    };
+    
+    /**
+     * Retrieve a priority by its name
+     * @param  {string} name
+     * @return {object}      
+     */
+    config.getPriorityByName = function (name) {
+      for (var priority in config.priorities) {
+        if (config.priorities[priority].name === name) {
+          return config.priorities[priority];
+        }
+      }
+    };
+
+    /**
      * Load the configuration from local storage
      */
     config.load = function () {
