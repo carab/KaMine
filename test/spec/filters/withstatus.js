@@ -2,38 +2,37 @@
 
 describe('Filter: withStatus', function () {
 
-  // load the filter's module
   beforeEach(module('kamineApp'));
 
-  // initialize a new instance of the filter before each test
   var withStatus,
-    config;
-  
-  beforeEach(inject(function ($filter, _config_) {
+    stories = [
+      { id: 1, status: { name: 'todo' } },
+      { id: 2, status: { name: 'testko' } },
+      { id: 3, status: { name: 'inprogress' } },
+      { id: 4, status: { name: 'totest' } },
+      { id: 5, status: { name: 'testing' } },
+      { id: 6, status: { name: 'done' } }
+    ];
+
+  beforeEach(inject(function ($filter) {
     withStatus = $filter('withStatus');
-    config = _config_;
   }));
 
   it('should return only the stories with specified status', function () {
-    var statutes = ['todo', 'testko'],
-      stories = [{
-        status: { id: config.getStatusByName('todo').id }
-      }, {
-        status: { id: config.getStatusByName('testko').id }
-      }, {
-        status: { id: config.getStatusByName('inprogress').id }
-      }, {
-        status: { id: config.getStatusByName('totest').id }
-      }, {
-        status: { id: config.getStatusByName('testing').id }
-      }, {
-        status: { id: config.getStatusByName('done').id }
-      }],
-      expectedStories = [{
-        status: { id: config.getStatusByName('todo').id }
-      }, {
-        status: { id: config.getStatusByName('testko').id }
-      }];
+    var statutes = 'testko',
+      expectedStories = [
+        { id: 2, status: { name: 'testko' } }
+      ];
+
+    expect(withStatus(stories, statutes)).toEqual(expectedStories);
+  });
+
+  it('should also works with an array of statutes', function () {
+    var statutes = ['inprogress', 'testko'],
+      expectedStories = [
+        { id: 2, status: { name: 'testko' } },
+        { id: 3, status: { name: 'inprogress' } }
+      ];
 
     expect(withStatus(stories, statutes)).toEqual(expectedStories);
   });

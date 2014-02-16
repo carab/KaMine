@@ -2,13 +2,11 @@
 
 describe('Service: config', function () {
 
-  // load the service's module
   beforeEach(module('kamineApp'));
 
-  // instantiate service
   var config;
-  beforeEach(inject(function (_config_) {
-    config = _config_;
+  beforeEach(inject(function ($injector) {
+    config = $injector.get('config');
   }));
 
   it('should do something', function () {

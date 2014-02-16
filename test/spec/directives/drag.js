@@ -2,7 +2,6 @@
 
 describe('Directive: drag', function () {
 
-  // load the directive's module
   beforeEach(module('kamineApp'));
 
   var element,

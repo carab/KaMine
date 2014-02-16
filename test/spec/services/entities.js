@@ -2,13 +2,11 @@
 
 describe('Service: entities', function () {
 
-  // load the service's module
   beforeEach(module('kamineApp'));
 
-  // instantiate service
   var entities;
-  beforeEach(inject(function (_entities_) {
-    entities = _entities_;
+  beforeEach(inject(function ($injector) {
+    entities = $injector.get('entities');
   }));
 
   it('should have a user object', function () {

@@ -2,13 +2,11 @@
 
 describe('Service: collections', function () {
 
-  // load the service's module
   beforeEach(module('kamineApp'));
 
-  // instantiate service
   var collections;
-  beforeEach(inject(function (_collections_) {
-    collections = _collections_;
+  beforeEach(inject(function ($injector) {
+    collections = $injector.get('collections');
   }));
 
   it('should have a sprints array', function () {

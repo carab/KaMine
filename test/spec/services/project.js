@@ -2,13 +2,11 @@
 
 describe('Service: Project', function () {
 
-  // load the service's module
   beforeEach(module('kamineApp'));
 
-  // instantiate service
   var Project;
-  beforeEach(inject(function (_Project_) {
-    Project = _Project_;
+  beforeEach(inject(function ($injector) {
+    Project = $injector.get('Project');
   }));
 
   it('should do something', function () {

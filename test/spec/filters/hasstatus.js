@@ -2,49 +2,36 @@
 
 describe('Filter: hasStatus', function () {
 
-  // load the filter's module
   beforeEach(module('kamineApp'));
 
-  // initialize a new instance of the filter before each test
-  var hasStatus,
-    config;
+  var hasStatus;
 
-  beforeEach(inject(function ($filter, _config_) {
+  beforeEach(inject(function ($filter) {
     hasStatus = $filter('hasStatus');
-    config = _config_;
   }));
 
   it('should return true if the story does have the specified status, and false if it does not', function () {
-    var status = 'todo',
-      story = {
-        status: { id: config.getStatusByName('todo').id }
-      };
+    var story = { id: 1, status: { name: 'todo' } },
+      status;
 
+    status = 'todo';
     expect(hasStatus(story, status)).toBeTrue();
 
     status = 'testko';
-
     expect(hasStatus(story, status)).toBeFalse();
   });
 
   it('should also work with an array of statutes', function () {
     var status = ['todo', 'testko'],
-      story = {
-        status: { id: config.getStatusByName('todo').id }
-      };
-
+      story;
+      
+    story = { id: 1, status: { name: 'todo' } };
     expect(hasStatus(story, status)).toBeTrue();
 
-    story = {
-      status: { id: config.getStatusByName('testko').id }
-    };
-
+    story = { id: 2, status: { name: 'testko' } };
     expect(hasStatus(story, status)).toBeTrue();
 
-    story = {
-      status: { id: config.getStatusByName('done').id }
-    };
-
+    story = { id: 3, status: { name: 'done' } };
     expect(hasStatus(story, status)).toBeFalse();
   });
 

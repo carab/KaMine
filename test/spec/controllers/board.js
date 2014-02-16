@@ -2,7 +2,6 @@
 
 describe('Controller: BoardCtrl', function () {
 
-  // Load the controller's module
   beforeEach(module('kamineApp'));
 
   var BoardCtrl,
@@ -11,14 +10,11 @@ describe('Controller: BoardCtrl', function () {
     mockEntities,
     mockBoard;
 
-  // Register the mocks
   beforeEach(function () {
     module(function ($provide) {
       mockCollections = 'I am the collections';
       mockEntities = 'I am the entities';
-      mockBoard = {
-        columns: 'I am the board columns'
-      };
+      mockBoard = { columns: 'I am the board columns' };
 
       $provide.value('collections', mockCollections);
       $provide.value('entities', mockEntities);
@@ -26,12 +22,9 @@ describe('Controller: BoardCtrl', function () {
     });
   });
 
-  // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    BoardCtrl = $controller('BoardCtrl', {
-      $scope: scope
-    });
+    BoardCtrl = $controller('BoardCtrl', { $scope: scope });
   }));
 
   it('should attach the board columns to the scope', function () {

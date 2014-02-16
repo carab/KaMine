@@ -2,7 +2,6 @@
 
 describe('Controller: ChartCtrl', function () {
 
-  // Load the controller's module
   beforeEach(module('kamineApp'));
 
   var ChartCtrl,
@@ -10,7 +9,6 @@ describe('Controller: ChartCtrl', function () {
     mockCollections,
     mockEntities;
 
-  // Register the mocks
   beforeEach(function () {
     module(function ($provide) {
       mockCollections = 'I am the collections';
@@ -21,7 +19,6 @@ describe('Controller: ChartCtrl', function () {
     });
   });
 
-  // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     ChartCtrl = $controller('ChartCtrl', {

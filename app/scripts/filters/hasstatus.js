@@ -1,15 +1,13 @@
 'use strict';
 
 angular.module('kamineApp')
-  .filter('hasStatus', function (config) {
+  .filter('hasStatus', function () {
     return function(story, statutes) {
       // Cast to array if not array
       if (!angular.isArray(statutes)) {
         statutes = [statutes];
       }
 
-      var status = config.getStatusById(story.status.id);
-
-      return (angular.isDefined(status) && statutes.indexOf(status.name) !== -1);
+      return (statutes.indexOf(story.status.name) !== -1);
     };
   });

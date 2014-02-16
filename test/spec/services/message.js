@@ -2,37 +2,38 @@
 
 describe('Service: Message', function () {
 
-  // load the service's module
   beforeEach(module('kamineApp'));
 
-  // instantiate service
   var Message;
-  beforeEach(inject(function (_Message_) {
-    Message = _Message_;
+  beforeEach(inject(function ($injector) {
+    Message = $injector.get('Message');
   }));
 
   it('should create different message type and add it to the list', function () {
-    var message;
+    var definitions = [{
+      message: 'Danger message',
+      method: 'addDanger',
+      type: 'danger'
+    }, {
+      message: 'Warning message',
+      method: 'addWarning',
+      type: 'warning'
+    }, {
+      message: 'Info message',
+      method: 'addInfo',
+      type: 'info'
+    }, {
+      message: 'Success message',
+      method: 'addSuccess',
+      type: 'success'
+    }];
     
-    message = Message.addDanger('Danger message');
-    expect(message.text).toBe('Danger message');
-    expect(message.type).toBe('danger');
-    expect(Message.messages[message.timestamp]).toBeDefined();
-
-    message = Message.addWarning('Warning message');
-    expect(message.text).toBe('Warning message');
-    expect(message.type).toBe('warning');
-    expect(Message.messages[message.timestamp]).toBeDefined();
-
-    message = Message.addInfo('Info message');
-    expect(message.text).toBe('Info message');
-    expect(message.type).toBe('info');
-    expect(Message.messages[message.timestamp]).toBeDefined();
-
-    message = Message.addSuccess('Success message');
-    expect(message.text).toBe('Success message');
-    expect(message.type).toBe('success');
-    expect(Message.messages[message.timestamp]).toBeDefined();
+    angular.forEach(definitions, function (definition) {
+      var message = Message.addDanger(definition.message);
+      expect(message.text).toBe(definition.message);
+      expect(message.type).toBe(definition.type);
+      expect(Message.messages[message.timestamp]).toBeDefined();
+    });
   });
 
   it('should allow disable or enable new message but enable it by default', function () {
@@ -51,6 +52,23 @@ describe('Service: Message', function () {
     var message = Message.addDanger('Danger message');
     expect(message).toBeUndefined();
     expect(Object.keys(Message.messages).length).toBe(0);
+  });
+
+  it('should allow a message to be deleted from the list', function () {
+    var message = Message.addDanger('Danger message'),
+      timestamp = message.timestamp;
+
+    expect(message.text).toBe('Danger message');
+    expect(message.type).toBe('danger');
+    expect(Message.messages[timestamp]).toBeDefined();
+
+    message.remove();
+
+    expect(Message.messages[timestamp]).toBeUndefined();
+  });
+
+  it('should allow a message to automatically delete after specified delay', function () {
+    
   });
 
 });

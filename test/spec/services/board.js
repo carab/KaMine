@@ -2,13 +2,11 @@
 
 describe('Service: board', function () {
 
-  // Load the service's module
   beforeEach(module('kamineApp'));
 
-  // Instantiate service
   var board;
-  beforeEach(inject(function (_board_) {
-    board = _board_;
+  beforeEach(inject(function ($injector) {
+    board = $injector.get('board');
   }));
 
   it('should have an array of columns with a name and a statutes array', function () {

@@ -31,17 +31,17 @@ angular.module('kamineApp')
 
         return service.messages[timestamp];
       },
-      addDanger: function(text) {
-        return service.add(text, 'danger', 0);
+      addDanger: function(text, delay) {
+        return service.add(text, 'danger', delay);
       },
-      addSuccess: function(text) {
-        return service.add(text, 'success');
+      addSuccess: function(text, delay) {
+        return service.add(text, 'success', delay);
       },
-      addWarning: function(text) {
-        return service.add(text, 'warning');
+      addWarning: function(text, delay) {
+        return service.add(text, 'warning', delay);
       },
-      addInfo: function(text) {
-        return service.add(text, 'info');
+      addInfo: function(text, delay) {
+        return service.add(text, 'info', delay);
       },
       enable: function() {
         service.disabled = false;
