@@ -12,24 +12,27 @@ describe('Filter: hasStatus', function () {
   }));
 
   it('should return the input prefixed with "hasStatus filter:"', function () {
-    var stories = [{
-      status: 'todo'
-    }, {
-      status: 'testko'
-    }, {
-      status: 'inprogress'
-    }, {
-      status: 'totest'
-    }, {
-      status: 'testing'
-    }, {
-      status: 'done'
-    }];
+    var statutes = ['todo', 'testko'],
+      stories = [{
+        status: 'todo'
+      }, {
+        status: 'testko'
+      }, {
+        status: 'inprogress'
+      }, {
+        status: 'totest'
+      }, {
+        status: 'testing'
+      }, {
+        status: 'done'
+      }],
+      expectedStories = [{
+        status: 'todo'
+      }, {
+        status: 'testko'
+      }];
 
-    var statutes = ['todo', 'testko'];
-
-    expect(hasStatus(stories, statutes).length).toBe(2);
-    
+    expect(hasStatus(stories, statutes)).toEqual(expectedStories);
   });
 
 });
