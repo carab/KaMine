@@ -2,7 +2,7 @@
 
 describe('Service: config', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var config;
   beforeEach(inject(function ($injector) {

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kamineApp')
+angular.module('kamine.app')
   .factory('User', function ($resource, config) {
     return $resource(':scheme\\:\\/\\/:host\\::port/users/:id.json', {
       host: function () { return config.host; },

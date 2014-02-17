@@ -2,7 +2,7 @@
 
 describe('Controller: BoardCtrl', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var BoardCtrl,
     scope,

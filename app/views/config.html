@@ -1,17 +1,119 @@
-<div class="modal-header">
-    <h3 translate>configuration</h3>
-</div>
-<div class="modal-body">
-    <form novalidate role="form">
-        <div class="form-group">
-            <textarea ng-model="config.json" class="form-control" rows="10"></textarea>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-warning" ng-click="reset()" translate>restoreDefaults</button>
-      </div>
-    </form>
-</div>
-<div class="modal-footer">
-    <button class="btn btn-default" ng-click="cancel()" translate>cancel</button>
-    <button class="btn btn-primary" ng-click="save()" translate>save</button>
+<div class="config">
+    <div class="modal-header">
+        <h3 translate>configuration</h3>
+    </div>
+    <div class="modal-body">
+        <form novalidate role="form">
+            <fieldset>
+                <legend translate>api</legend>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label translate>scheme</label>
+                            <input type="text" ng-model="config.scheme" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label translate>host</label>
+                            <input type="text" ng-model="config.host" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label translate>port</label>
+                            <input type="text" ng-model="config.port" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend translate>projects</legend>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <label translate>sort</label>
+                            <input type="text" ng-model="config.projects.sort" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend translate>sprints</legend>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <label translate>tracker</label>
+                            <input type="text" ng-model="config.sprints.tracker" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label translate>title</label>
+                            <input type="text" ng-model="config.sprints.title" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <label translate>sort</label>
+                            <input type="text" ng-model="config.sprints.sort" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend translate>stories</legend>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <label translate>tracker</label>
+                            <input type="text" ng-model="config.stories.tracker" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label translate>title</label>
+                            <input type="text" ng-model="config.stories.title" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <label translate>sort</label>
+                            <input type="text" ng-model="config.stories.sort" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend translate>statutes</legend>
+                <div class="row">
+                    <div class="col-xs-2" ng-repeat="status in config.statutes">
+                        <div class="form-group">
+                            <label translate>{{status.name}}</label>
+                            <input type="text" ng-model="status.id" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend translate>priorities</legend>
+                <div class="row">
+                    <div class="col-xs-3" ng-repeat="priority in config.priorities">
+                        <div class="form-group">
+                            <label translate>{{priority.name}}</label>
+                            <input type="text" ng-model="priority.id" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group">
+              <button class="btn btn-default" ng-click="reset()" translate>reset</button>
+              <button class="btn btn-warning" ng-click="restore()" translate>restoreDefaults</button>
+          </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="cancel()" translate>cancel</button>
+        <button class="btn btn-primary" ng-click="save()" translate>save</button>
+    </div>
 </div>

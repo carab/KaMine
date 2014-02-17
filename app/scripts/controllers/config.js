@@ -1,17 +1,22 @@
 'use strict';
 
-angular.module('kamineApp')
+angular.module('kamine.app')
   .controller('ConfigCtrl', function ($scope, $modalInstance, localStorageService, config) {
-    $scope.config = { json: angular.toJson(config) };
+    $scope.config = angular.copy(config);
 
     $scope.reset = function () {
-      $scope.config.json = angular.toJson(config.getDefaults());
+      $scope.config = angular.copy(config);
+    };
+
+    $scope.restore = function () {
+      $scope.config = angular.copy(config.getDefaults());
     };
 
     $scope.save = function () {
-      $modalInstance.close($scope.config.json);
+      $modalInstance.close($scope.config);
 
-      config.save(angular.fromJson($scope.config.json));
+      config.set($scope.config);
+      config.save();
     };
 
     $scope.cancel = function () {

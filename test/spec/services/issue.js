@@ -2,7 +2,7 @@
 
 describe('Service: Issue', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var Issue;
   beforeEach(inject(function ($injector) {

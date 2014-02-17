@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kamineApp')
+angular.module('kamine.app')
   .filter('withStatus', function ($filter) {
     return function(stories, statutes) {
       var filteredStories = [];

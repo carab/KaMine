@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('kamineApp')
+angular.module('kamine.app')
   .factory('config', function (localStorageService) {
-    var defaults = {
+    var config = {}, methods = {}, defaults = {
       host: 'redmine-projets.smile.fr',
       scheme: 'https',
       port: '',
@@ -13,7 +13,7 @@ angular.module('kamineApp')
       sprints: {
         tracker: 4, // Feature
         sort: 'id',
-        name: 'Sprint #(.+)'
+        title: 'Sprint #(.+)'
       },
       stories: {
         tracker: 2, // Change
@@ -23,10 +23,10 @@ angular.module('kamineApp')
       statutes: [
         //master: 26, // Status change
         { name: 'todo', id: 17, next: ['inprogress'] }, // Quantified
+        { name: 'testko', id: 52, next: ['inprogress'] }, // KO on internal testing environement
         { name: 'inprogress', id: 2, next: ['totest'] }, // In progress
         { name: 'totest', id: 18, next: ['testing'] }, // Delivered for internal testing
         { name: 'testing', id: 53, next: ['testko', 'done'] }, // Internal testing in progress
-        { name: 'testko', id: 52, next: ['inprogress'] }, // KO on internal testing environement
         { name: 'done', id: 19, next: ['todo', 'inprogress'] } // OK on internal testing environement
       ],
       priorities: [
@@ -37,14 +37,12 @@ angular.module('kamineApp')
       ],
     };
 
-    var config = angular.copy(defaults);
-
     /**
      * Retrieve a status by its id
      * @param  {integer} id
      * @return {object}      
      */
-    config.getStatusById = function (id) {
+    methods.getStatusById = function (id) {
       for (var status in config.statutes) {
         if (config.statutes[status].id === id) {
           return config.statutes[status];
@@ -57,7 +55,7 @@ angular.module('kamineApp')
      * @param  {string} name
      * @return {object}      
      */
-    config.getStatusByName = function (name) {
+    methods.getStatusByName = function (name) {
       for (var status in config.statutes) {
         if (config.statutes[status].name === name) {
           return config.statutes[status];
@@ -70,7 +68,7 @@ angular.module('kamineApp')
      * @param  {integer} id
      * @return {object}      
      */
-    config.getPriorityById = function (id) {
+    methods.getPriorityById = function (id) {
       for (var priority in config.priorities) {
         if (config.priorities[priority].id === id) {
           return config.priorities[priority];
@@ -83,7 +81,7 @@ angular.module('kamineApp')
      * @param  {string} name
      * @return {object}      
      */
-    config.getPriorityByName = function (name) {
+    methods.getPriorityByName = function (name) {
       for (var priority in config.priorities) {
         if (config.priorities[priority].name === name) {
           return config.priorities[priority];
@@ -91,26 +89,37 @@ angular.module('kamineApp')
       }
     };
 
-    config.getDefaults = function () {
+    /**
+     * Default configuration
+     * @return {object}
+     */
+    methods.getDefaults = function () {
       return defaults;
     };
 
     /**
      * Load the configuration from local storage
      */
-    config.load = function () {
-      angular.extend(config, localStorageService.get('config'));
+    methods.load = function () {
+      methods.set(localStorageService.get('config'));
     };
 
     /**
      * Save the configuration to local storage
      */
-    config.save = function (newConfig) {
-      localStorageService.set('config', newConfig);
-      config.load();
+    methods.save = function () {
+      localStorageService.set('config', config);
     };
 
-    config.load();
+    /**
+     * Save the configuration to local storage
+     */
+    methods.set = function (newConfig) {
+      angular.copy(newConfig, config);
+      angular.extend(config, methods);
+    };
+
+    methods.load();
 
     return config;
   });

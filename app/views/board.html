@@ -21,7 +21,7 @@
 
                     <div
                         bindonce
-                        ng-repeat="story in collections.stories | withStatus:column.statutes"
+                        ng-repeat="story in state.stories | withStatus:column.statutes"
                         class="story well"
                         drag="story" drag-class="dragging-story"
                     >

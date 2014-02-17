@@ -2,7 +2,7 @@
 
 describe('Filter: withStatus', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var withStatus,
     stories = [

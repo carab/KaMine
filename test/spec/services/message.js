@@ -2,7 +2,7 @@
 
 describe('Service: Message', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var Message, message, $timeout,
     definitions = [{

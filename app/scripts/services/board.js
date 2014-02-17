@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kamineApp')
+angular.module('kamine.app')
   .service('board', function () {
     this.columns = [{
         name: 'todo',

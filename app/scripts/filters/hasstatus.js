@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kamineApp')
+angular.module('kamine.app')
   .filter('hasStatus', function () {
     return function(story, statutes) {
       // Cast to array if not array

@@ -2,7 +2,7 @@
 
 describe('Controller: MessagesCtrl', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var MessagesCtrl,
     scope;

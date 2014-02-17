@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kamineApp')
+angular.module('kamine.app')
   .directive('drag', function ($rootScope) {
     function dragStart(evt, element, dragClass) {
       element.addClass(dragClass);

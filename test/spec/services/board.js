@@ -2,7 +2,7 @@
 
 describe('Service: board', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var board;
   beforeEach(inject(function ($injector) {

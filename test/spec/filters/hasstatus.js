@@ -2,7 +2,7 @@
 
 describe('Filter: hasStatus', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var hasStatus;
 

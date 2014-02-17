@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kamineApp', [
+angular.module('kamine.app', [
   'ngCookies',
   'ngResource',
   'ngSanitize',

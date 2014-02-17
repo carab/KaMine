@@ -2,7 +2,7 @@
 
 describe('Controller: ChartCtrl', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var ChartCtrl,
     scope,

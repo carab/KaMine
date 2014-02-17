@@ -2,7 +2,7 @@
 
 describe('Service: Loader', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var Loader;
   beforeEach(inject(function ($injector) {

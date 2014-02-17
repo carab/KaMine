@@ -3,7 +3,7 @@
 describe('Controller: ConfigCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var ConfigCtrl,
     scope;

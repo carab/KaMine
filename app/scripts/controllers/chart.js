@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('kamineApp')
-  .controller('ChartCtrl', function ($scope, collections, entities) {
-    $scope.entities = entities;
-    $scope.collections = collections;
+angular.module('kamine.app')
+  .controller('ChartCtrl', function ($scope, state) {
+    $scope.state = state;
   });

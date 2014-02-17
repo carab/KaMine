@@ -2,7 +2,7 @@
 
 describe('Service: Story', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var Story,
     config,

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kamineApp')
+angular.module('kamine.app')
   .directive('drop', function ($rootScope) {
     function dragEnter(evt, element, dropClass) {
       evt.preventDefault();

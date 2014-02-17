@@ -2,7 +2,7 @@
 
 describe('Controller: NavbarCtrl', function () {
 
-  beforeEach(module('kamineApp'));
+  beforeEach(module('kamine.app'));
 
   var NavbarCtrl,
     scope;

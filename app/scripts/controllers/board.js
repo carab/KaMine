@@ -1,8 +1,7 @@
 'use strict';
 
-angular.module('kamineApp')
-  .controller('BoardCtrl', function ($scope, board, collections, entities) {
+angular.module('kamine.app')
+  .controller('BoardCtrl', function ($scope, board, state) {
     $scope.columns = board.columns;
-    $scope.entities = entities;
-    $scope.collections = collections;
+    $scope.state = state;
   });
