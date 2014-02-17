@@ -9,9 +9,9 @@ describe('Service: Story', function () {
     $httpBackend,
     response = {
       issues: [
-        { id: 1, status: { id: 17, name: 'this should change' } },
-        { id: 2, status: { id: 2, name: 'this should change' } },
-        { id: 3, status: { id: 18, name: 'this should change' } }
+        { id: 1, status: { id: 17, name: 'this will change' }, priority: { id: 3, name: 'this will change' } },
+        { id: 2, status: { id: 2, name: 'this will change' }, priority: { id: 4, name: 'this will change' } },
+        { id: 3, status: { id: 18, name: 'this will change' }, priority: { id: 6, name: 'this will change' } }
       ]
     };
 
@@ -20,7 +20,6 @@ describe('Service: Story', function () {
     config = $injector.get('config');
     $httpBackend = $injector.get('$httpBackend');
 
-    //$httpBackend.when('GET', '/translations/en.json').respond('');
     $httpBackend.when('GET', config.url + 'issues.json').respond(response);
   }));
 

@@ -1,55 +1,82 @@
 'use strict';
 
 angular.module('kamineApp')
-  .factory('Message', function ($timeout) {
-    var service = {
-      messages: {},
-      disabled: false,
-      add: function(text, type, delay) {
-        if (service.disabled) {
-          return;
-        }
+  .service('Message', function ($timeout) {
+    this.messages = {};
+    this.disabled = false;
 
-        var timestamp = (new Date()).getTime();
+    this.last = function () {
+      var keys = Object.keys(this.messages),
+        key = keys[keys.length - 1];
 
-        service.messages[timestamp] = {
-          text: text,
-          type: type,
-          timestamp: timestamp,
-          remove: function() {
-            delete service.messages[timestamp];
-          }
-        };
+      return this.get(key);
+    };
 
-        if (0 !== delay) {
-          $timeout(function() {
-            if (angular.isDefined(service.messages[timestamp])) {
-              service.messages[timestamp].remove();
-            }
-          }, (delay || 3) * 1000);
-        }
+    this.count = function () {
+      return Object.keys(this.messages).length;
+    };
 
-        return service.messages[timestamp];
-      },
-      addDanger: function(text, delay) {
-        return service.add(text, 'danger', delay);
-      },
-      addSuccess: function(text, delay) {
-        return service.add(text, 'success', delay);
-      },
-      addWarning: function(text, delay) {
-        return service.add(text, 'warning', delay);
-      },
-      addInfo: function(text, delay) {
-        return service.add(text, 'info', delay);
-      },
-      enable: function() {
-        service.disabled = false;
-      },
-      disable: function() {
-        service.disabled = true;
+    this.get = function (key) {
+      return this.messages[key];
+    };
+
+    this.remove = function (key) {
+      if (angular.isDefined(this.messages[key])) {
+        delete this.messages[key];
       }
     };
 
-    return service;
+    this.add = function (text, type, delay) {
+      if (this.disabled) {
+        return;
+      }
+
+      var key, last = this.last();
+
+      if (angular.isDefined(last)) {
+        key = last.key + 1;
+      } else {
+        key = 0;
+      }
+
+      this.messages[key] = {
+        text: text,
+        type: type,
+        key: key
+      };
+
+      if (0 !== delay) {
+        var that = this;
+        $timeout(function () {
+          that.remove(key);
+        }, (delay || 3) * 1000);
+      }
+
+      return this.messages[key];
+    };
+
+    this.addDanger = function (text, delay) {
+      return this.add(text, 'danger', delay);
+    };
+
+    this.addSuccess = function (text, delay) {
+      return this.add(text, 'success', delay);
+    };
+
+    this.addWarning = function (text, delay) {
+      return this.add(text, 'warning', delay);
+    };
+
+    this.addInfo = function (text, delay) {
+      return this.add(text, 'info', delay);
+    };
+
+    this.enable = function () {
+      this.disabled = false;
+    };
+
+    this.disable = function () {
+      this.disabled = true;
+    };
+
   });
