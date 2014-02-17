@@ -15,6 +15,9 @@
     "goSprint": "Go to sprint",
     "switchSprint": "Switch sprint",
     "refreshStories": "Refresh stories",
-    "editConfiguration": "Edit configuration",
-    "switchLanguage": "Switch language"
+    "configuration": "Configuration",
+    "switchLanguage": "Switch language",
+    "save": "Save",
+    "cancel": "Cancel",
+    "restoreDefaults": "Restore defaults"
 }

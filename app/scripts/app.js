@@ -7,7 +7,8 @@ angular.module('kamineApp', [
   'ngRoute',
   'pasvaz.bindonce',
   'pascalprecht.translate',
-  'LocalStorageModule'
+  'LocalStorageModule',
+  'ui.bootstrap'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -36,4 +37,12 @@ angular.module('kamineApp', [
   .config(function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  })
+  .config(function ($tooltipProvider) {
+    $tooltipProvider.options({
+      placement: 'bottom',
+      animation: true,
+      popupDelay: 500,
+      appendToBody: true
+    });
   });

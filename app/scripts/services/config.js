@@ -3,7 +3,9 @@
 angular.module('kamineApp')
   .factory('config', function (localStorageService) {
     var defaults = {
-      url: 'https://redmine-projets.smile.fr/',
+      host: 'redmine-projets.smile.fr',
+      scheme: 'https',
+      port: '',
       limit: 400,
       projects: {
         sort: 'id'
@@ -35,7 +37,7 @@ angular.module('kamineApp')
       ],
     };
 
-    var config = angular.extend({}, defaults);
+    var config = angular.copy(defaults);
 
     /**
      * Retrieve a status by its id
@@ -89,6 +91,10 @@ angular.module('kamineApp')
       }
     };
 
+    config.getDefaults = function () {
+      return defaults;
+    };
+
     /**
      * Load the configuration from local storage
      */
@@ -99,8 +105,9 @@ angular.module('kamineApp')
     /**
      * Save the configuration to local storage
      */
-    config.save = function () {
-      localStorageService.set('config', config);
+    config.save = function (newConfig) {
+      localStorageService.set('config', newConfig);
+      config.load();
     };
 
     config.load();

@@ -15,6 +15,9 @@
     "goSprint": "Ouvrir le sprint",
     "switchSprint": "Changer de sprint",
     "refreshStories": "Actualiser les stories",
-    "editConfiguration": "Modifier la configuration",
-    "switchLanguage": "Changer de langage"
+    "configuration": "Configuration",
+    "switchLanguage": "Changer de langage",
+    "save": "Sauvegarder",
+    "cancel": "Annuler",
+    "restoreDefaults": "Restorer par défaut"
 }

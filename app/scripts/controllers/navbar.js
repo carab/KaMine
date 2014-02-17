@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('kamineApp')
-  .controller('NavbarCtrl', function ($scope, $http, $translate, $location, config, entities, collections, User, Project, Issue) {
+  .controller('NavbarCtrl', function ($scope, $http, $translate, $location, $modal, config, entities, collections, User, Project, Issue) {
     $scope.entities = entities;
     $scope.collections = collections;
-    $scope.translate = $translate;
 
     $scope.isActive = function(path) {
       return ($location.path().substr(0, path.length) === path);
@@ -15,7 +14,8 @@ angular.module('kamineApp')
       $http.defaults.headers.common['X-Redmine-API-Key'] = entities.user.api_key;
       /*jshint camelcase: true */
 
-      entities.user = User.get({ 'id': 'current' });
+      //entities.user = User.get({ 'id': 'current' });
+      User.get({ 'id': 'current' });
 
       collections.sprints = [];
       collections.projects = [];
@@ -61,5 +61,20 @@ angular.module('kamineApp')
         'limit': config.limit,
         'status_id': '*'
       });
+    };
+
+    $scope.showConfiguration = function () {
+      $modal.open({
+        templateUrl: 'views/config.html',
+        controller: 'ConfigCtrl'
+      });
+    };
+
+    $scope.setLanguage = function (language) {
+      $translate.use(language);
+    };
+
+    $scope.isLanguage = function (language) {
+      return $translate.use() === language;
     };
   });
