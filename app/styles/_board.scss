@@ -3,4 +3,8 @@
     .board-table {
         table-layout: fixed;
     }
+
+    .dropping-in-column {
+        @extend .bg-warning;
+    }
 }

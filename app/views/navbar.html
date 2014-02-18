@@ -4,26 +4,26 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li ng-class="{ active: isActivePath('/board') }"><a ng-href="#/board" translate>board</a></li>
-            <li ng-class="{ active: isActivePath('/chart') }"><a ng-href="#/chart" translate>chart</a></li>
+            <li ng-class="{ active: isActivePath('/board') }"><a ng-href="#/board" translate>navbar.board</a></li>
+            <li ng-class="{ active: isActivePath('/chart') }"><a ng-href="#/chart" translate>navbar.chart</a></li>
         </ul>
         <div class="navbar-form navbar-right">
             <div class="form-group">
-                <input type="text" placeholder="{{'key' | translate}}" class="form-control user-key" name="user-key" ng-model="state.user.api_key" ng-disabled="loader.active" ng-change="setUser()"/>
+                <input type="text" placeholder="{{'navbar.key' | translate}}" class="form-control user-key" name="user-key" ng-model="state.user.api_key" ng-disabled="loader.active" ng-change="setUser()"/>
             </div>
 
             <div class="form-group">
                 <div class="input-group short-input-group">
                     <span class="input-group-btn">
-                        <a class="btn btn-default" ng-href="{{state.project.url}}" tooltip="{{'goProject' | translate}}">
+                        <a class="btn btn-default" ng-href="{{state.project.url}}" tooltip="{{'navbar.goProject' | translate}}">
                             <i class="fa fa-external-link"></i>
                         </a>
                     </span>
 
-                    <input type="text" placeholder="{{'project' | translate}}" class="form-control project-name" name="project-name" ng-model="state.project.name" />
+                    <input type="text" placeholder="{{'navbar.project' | translate}}" class="form-control project-name" name="project-name" ng-model="state.project.name" />
 
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" tooltip="{{'switchProject' | translate}}">
+                        <button type="button" class="btn btn-default dropdown-toggle" tooltip="{{'navbar.switchProject' | translate}}">
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
@@ -38,15 +38,15 @@
             <div class="form-group">
                 <div class="input-group short-input-group">
                     <span class="input-group-btn">
-                        <a class="btn btn-default" ng-href="{{state.sprint.url}}" tooltip="{{'goSprint' | translate}}">
+                        <a class="btn btn-default" ng-href="{{state.sprint.url}}" tooltip="{{'navbar.goSprint' | translate}}">
                             <i class="fa fa-external-link"></i>
                         </a>
                     </span>
 
-                    <input type="text" placeholder="{{'sprint' | translate}}" class="form-control sprint-title" name="sprint-title" ng-model="state.sprint.title" />
+                    <input type="text" placeholder="{{'navbar.sprint' | translate}}" class="form-control sprint-title" name="sprint-title" ng-model="state.sprint.title" />
 
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" tooltip="{{'switchSprint' | translate}}">
+                        <button type="button" class="btn btn-default dropdown-toggle" tooltip="{{'navbar.switchSprint' | translate}}">
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
@@ -62,14 +62,14 @@
                 <div class="btn-group">
                     <button type="button" 
                         class="btn btn-default"
-                        tooltip="{{'refreshStories' | translate}}"
+                        tooltip="{{'navbar.refreshStories' | translate}}"
                     >
                         <i class="fa fa-refresh fa-lg" ng-click=""></i>
                     </button>
                     
                     <button type="button" 
                         class="btn btn-default"
-                        tooltip="{{'configuration' | translate}}"
+                        tooltip="{{'navbar.configuration' | translate}}"
                     >
                         <i class="fa fa-gear fa-lg" ng-click="showConfiguration()"></i>
                     </button>
@@ -78,7 +78,7 @@
                         <button type="button" 
                             class="btn btn-default dropdown-toggle" 
                             data-toggle="dropdown"
-                            tooltip="{{'switchLanguage' | translate}}"
+                            tooltip="{{'navbar.switchLanguage' | translate}}"
                         >
                             <i class="fa fa-globe fa-lg" ng-click=""></i>&nbsp;<span class="caret"></span>
                         </button>

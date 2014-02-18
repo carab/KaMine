@@ -1,27 +1,32 @@
 <div class="config">
-    <div class="modal-header">
-        <h3 translate>configuration</h3>
+    <div class="modal-header clearfix">
+        <div class="pull-left">
+            <h3 translate>config.configuration</h3>
+        </div>
+        <div class="pull-right">
+            <button class="btn btn-default" ng-click="toggleJsonEnabled()" translate>config.switchMode</button>
+        </div>
     </div>
     <div class="modal-body">
-        <form novalidate role="form">
+        <form ng-hide="json.enabled">
             <fieldset>
-                <legend translate>api</legend>
+                <legend translate>config.api</legend>
                 <div class="row">
                     <div class="col-xs-3">
                         <div class="form-group">
-                            <label translate>scheme</label>
+                            <label translate>config.scheme</label>
                             <input type="text" ng-model="config.scheme" class="form-control"/>
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label translate>host</label>
+                            <label translate>config.host</label>
                             <input type="text" ng-model="config.host" class="form-control"/>
                         </div>
                     </div>
                     <div class="col-xs-3">
                         <div class="form-group">
-                            <label translate>port</label>
+                            <label translate>config.port</label>
                             <input type="text" ng-model="config.port" class="form-control"/>
                         </div>
                     </div>
@@ -30,78 +35,87 @@
                 <div class="row">
                     <div class="col-xs-4">
                         <fieldset>
-                            <legend translate>projects</legend>
+                            <legend translate>config.projects</legend>
                             <div class="form-group">
-                                <label translate>sort</label>
+                                <label translate>config.sort</label>
                                 <input type="text" ng-model="config.projects.sort" class="form-control"/>
                             </div>
                         </fieldset>
                     </div>
                     <div class="col-xs-4">
                         <fieldset>
-                            <legend translate>sprints</legend>
+                            <legend translate>config.sprints</legend>
                             <div class="form-group">
-                                <label translate>tracker</label>
+                                <label translate>config.tracker</label>
                                 <input type="text" ng-model="config.sprints.tracker" class="form-control"/>
                             </div>
                             <div class="form-group">
-                                <label translate>title</label>
+                                <label translate>config.title</label>
                                 <input type="text" ng-model="config.sprints.title" class="form-control"/>
                             </div>
                             <div class="form-group">
-                                <label translate>sort</label>
+                                <label translate>config.sort</label>
                                 <input type="text" ng-model="config.sprints.sort" class="form-control"/>
                             </div>
                         </fieldset>
                     </div>
                     <div class="col-xs-4">
                         <fieldset>
-                            <legend translate>stories</legend>
+                            <legend translate>config.stories</legend>
                             <div class="form-group">
-                                <label translate>tracker</label>
+                                <label translate>config.tracker</label>
                                 <input type="text" ng-model="config.stories.tracker" class="form-control"/>
                             </div>
                             <div class="form-group">
-                                <label translate>title</label>
+                                <label translate>config.title</label>
                                 <input type="text" ng-model="config.stories.title" class="form-control"/>
                             </div>
                             <div class="form-group">
-                                <label translate>sort</label>
+                                <label translate>config.sort</label>
                                 <input type="text" ng-model="config.stories.sort" class="form-control"/>
                             </div>
                         </fieldset>
                     </div>
                 </div>
             <fieldset>
-                <legend translate>statutes</legend>
+                <legend translate>config.statutes</legend>
                 <div class="row">
                     <div class="col-xs-2" ng-repeat="status in config.statutes">
                         <div class="form-group">
-                            <label translate>{{status.name}}</label>
+                            <label translate>config.{{status.name}}</label>
                             <input type="text" ng-model="status.id" class="form-control"/>
                         </div>
                     </div>
                 </div>
             </fieldset>
             <fieldset>
-                <legend translate>priorities</legend>
+                <legend translate>config.priorities</legend>
                 <div class="row">
                     <div class="col-xs-3" ng-repeat="priority in config.priorities">
                         <div class="form-group">
-                            <label translate>{{priority.name}}</label>
+                            <label translate>config.{{priority.name}}</label>
                             <input type="text" ng-model="priority.id" class="form-control"/>
                         </div>
                     </div>
                 </div>
             </fieldset>
+        </form>
+        <form ng-show="json.enabled">
             <div class="form-group">
-              <button class="btn btn-default" ng-click="reset()" translate>reset</button>
-              <button class="btn btn-warning" ng-click="restore()" translate>restoreDefaults</button>
-          </div>
+                <textarea ng-model="json.value" class="form-control" rows="15"></textarea>
+                <span class="help-block" translate>config.jsonHelp</span>
+            </div>
         </form>
     </div>
-    <div class="modal-footer">
-        <button class="btn btn-default" ng-click="cancel()" translate>cancel</button>
-        <button class="btn btn-primary" ng-click="save()" translate>save</button>
+    <div class="modal-footer clearfix">
+        <div class="pull-left">
+            <button class="btn btn-default" ng-click="reset()" translate>config.reset</button>
+            <button class="btn btn-warning" ng-click="restore()" translate>config.restore</button>
+        </div>
+
+        <div class="pull-right">
+            <button class="btn btn-primary" ng-click="save()" translate>config.save</button>
+            <button class="btn btn-default" ng-click="cancel()" translate>config.cancel</button>
+        </div>
     </div>
 </div>

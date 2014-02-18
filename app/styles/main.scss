@@ -1,5 +1,5 @@
-$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
-@import 'sass-bootstrap/lib/bootstrap';
+$icon-font-path: "/bower_components/bootstrap-sass/vendor/assets/fonts/";
+@import "bootstrap-sass/vendor/assets/stylesheets/bootstrap";
 
 $fa-font-path: "../bower_components/font-awesome/fonts";
 @import "font-awesome/scss/font-awesome";

@@ -3,19 +3,41 @@
 angular.module('kamine.app')
   .controller('ConfigCtrl', function ($scope, $modalInstance, localStorageService, config) {
     $scope.config = angular.copy(config);
+    $scope.json = {
+      value: angular.toJson($scope.config),
+      enabled: false
+    };
+
+    $scope.toggleJsonEnabled = function () {
+      $scope.json.enabled = !$scope.json.enabled;
+
+      if ($scope.json.enabled) {
+        $scope.json.value = angular.toJson($scope.config);
+      } else {
+        angular.copy(angular.fromJson($scope.json.value), $scope.config);
+      }
+    };
 
     $scope.reset = function () {
       $scope.config = angular.copy(config);
+      $scope.json.value = angular.toJson(config);
     };
 
     $scope.restore = function () {
       $scope.config = angular.copy(config.getDefaults());
+      $scope.json.value = angular.toJson(config.getDefaults());
     };
 
     $scope.save = function () {
-      $modalInstance.close($scope.config);
+      var newConfig = $scope.config;
 
-      config.set($scope.config);
+      if ($scope.json.enabled) {
+        newConfig = angular.fromJson($scope.json.value);
+      }
+
+      $modalInstance.close(newConfig);
+      
+      config.set(newConfig);
       config.save();
     };
 

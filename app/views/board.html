@@ -7,7 +7,8 @@
                     ng-repeat="column in columns" 
                     class="board-heading" 
                     ng-class="column.name"
-                >{{column.name | translate}}</th>
+                    translate
+                >board.{{column.name}}</th>
             </tr>
         </thead>
         <tbody>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kamine.app')
-  .service('state', function state (User, config, Project, Story, Sprint) {
+  .service('state', function state ($http, config, User, Project, Story, Sprint) {
     this.user = new User();
     this.project = new Project();
     this.sprint = new Sprint();
