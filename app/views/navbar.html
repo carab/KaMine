@@ -9,7 +9,7 @@
         </ul>
         <div class="navbar-form navbar-right">
             <div class="form-group">
-                <input type="text" placeholder="{{'navbar.key' | translate}}" class="form-control user-key" name="user-key" ng-model="state.user.api_key" ng-disabled="loader.active" ng-change="setUser()"/>
+                <input type="text" placeholder="{{'navbar.key' | translate}}" class="form-control user-key" name="user-key" ng-model="state.key" ng-disabled="loader.active" ng-change="state.updateKey()"/>
             </div>
 
             <div class="form-group">
@@ -28,7 +28,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li bindonce ng-repeat="project in state.projects" ng-class="{ active: project.id==state.project.id }">
-                                <a ng-click="setProject(project)">{{project.name}}</a>
+                                <a ng-click="state.setProject(project)">{{project.name}}</a>
                             </li>
                         </ul>
                     </span>
@@ -51,7 +51,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li bindonce ng-repeat="sprint in state.sprints" ng-class="{ active: sprint.id==state.sprint.id }">
-                                <a ng-click="setSprint(sprint)">{{sprint.title}}</a>
+                                <a ng-click="state.setSprint(sprint)">{{sprint.title}}</a>
                             </li>
                         </ul>
                     </span>

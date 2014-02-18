@@ -2,6 +2,7 @@
 
 angular.module('kamine.app')
   .service('state', function state ($http, config, User, Project, Story, Sprint) {
+    this.key = '';
     this.user = new User();
     this.project = new Project();
     this.sprint = new Sprint();
@@ -11,13 +12,8 @@ angular.module('kamine.app')
     this.sprints = [];
     this.stories = [];
 
-    this.setUser = function () {
-      /*jshint camelcase: false */
-      $http.defaults.headers.common['X-Redmine-API-Key'] = this.user.api_key;
-      /*jshint camelcase: true */
-
-      //this.user = User.get({ 'id': 'current' });
-      User.get({ 'id': 'current' });
+    this.updateKey = function () {
+      this.user = User.get({ 'id': 'current', 'key': this.key });
 
       this.sprints = [];
       this.projects = [];
@@ -28,7 +24,8 @@ angular.module('kamine.app')
 
       this.projects = Project.query({
         'sort': config.projects.sort,
-        'limit': config.limit
+        'limit': config.limit,
+        'key': this.key
       });
     };
 
@@ -45,7 +42,8 @@ angular.module('kamine.app')
         'tracker_id': config.sprints.tracker,
         'sort': config.sprints.sort,
         'limit': config.limit,
-        'status_id': '*'
+        'status_id': '*',
+        'key': this.key
       });
     };
 
@@ -61,7 +59,12 @@ angular.module('kamine.app')
         'tracker_id': config.sprints.tracker,
         'sort': config.sprints.sort,
         'limit': config.limit,
-        'status_id': '*'
+        'status_id': '*',
+        'key': this.key
       });
+    };
+
+    this.setStory = function (story) {
+      this.story = story;
     };
   });
