@@ -13,12 +13,14 @@ angular.module('kamine.app', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/board', {
-        templateUrl: 'views/board.html',
-        controller: 'BoardCtrl'
+        templateUrl: 'partials/board.html',
+        controller: 'BoardCtrl',
+        reloadOnSearch: false
       })
       .when('/chart', {
-        templateUrl: 'views/chart.html',
-        controller: 'ChartCtrl'
+        templateUrl: 'partials/chart.html',
+        controller: 'ChartCtrl',
+        reloadOnSearch: false
       })
       .otherwise({
         redirectTo: '/board'
@@ -34,9 +36,8 @@ angular.module('kamine.app', [
       .preferredLanguage('en')
       .fallbackLanguage('en');
   })
-  .config(function ($httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  .config(function ($locationProvider) {
+    $locationProvider.html5Mode(true);
   })
   .config(function ($tooltipProvider) {
     $tooltipProvider.options({

@@ -2,7 +2,6 @@
     "navbar": {
         "board": "Board",
         "chart": "Chart",
-        "key": "Key",
         "project": "Project",
         "sprint": "Sprint",
         "story": "Story",
@@ -12,7 +11,9 @@
         "switchSprint": "Switch sprint",
         "refreshStories": "Refresh stories",
         "configuration": "Configuration",
-        "switchLanguage": "Switch language"
+        "switchLanguage": "Switch language",
+        "welcome": "Welcome {{firstname}}!",
+        "help": "Please update your configuration"
     },
     "board": {
         "todo": "To do",
@@ -27,6 +28,7 @@
         "reset": "Reset",
         "restore": "Restore",
         "api": "API",
+        "key": "Key",
         "scheme": "Scheme",
         "host": "Host",
         "port": "Port",

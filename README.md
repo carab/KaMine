@@ -65,3 +65,13 @@ If you wish to use the Yeoman Angular generator :
 2. `grunt test` : runs tests only.
 3. `grunt serve` : runs local web server, add a new tab to your browser and watch for files to auto update the page.
 
+TODO
+----
+
+* Finish sync between URL and selected project/sprint
+* Multiple profiles for configuration
+* Add spent time and comment when the story status changes
+* Do burndown chart
+* Allows to create sprints and stories
+* Change assignee
+* Better Board view

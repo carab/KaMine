@@ -2,7 +2,6 @@
     "navbar": {
         "board": "Tableau de bord",
         "chart": "Graphique",
-        "key": "Clé",
         "project": "Projet",
         "sprint": "Sprint",
         "story": "Story",
@@ -12,7 +11,9 @@
         "switchSprint": "Changer de sprint",
         "refreshStories": "Actualiser les stories",
         "configuration": "Configuration",
-        "switchLanguage": "Changer de langage"
+        "switchLanguage": "Changer de langage",
+        "welcome": "Bienvenue {{firstname}} !",
+        "help": "Veuillez mettre à jour votre configuration"
     },
     "board": {
         "todo": "À faire",
@@ -27,6 +28,7 @@
         "reset": "Reset",
         "restore": "Restaurer",
         "api": "API",
+        "key": "Clé",
         "scheme": "Schéma",
         "host": "Hôte",
         "port": "Port",

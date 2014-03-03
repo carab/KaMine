@@ -6,13 +6,14 @@ angular.module('kamine.app')
       host: 'redmine-projets.smile.fr',
       scheme: 'https',
       port: '',
+      key: '',
       limit: 400,
       projects: {
         sort: 'id'
       },
       sprints: {
         tracker: 4, // Feature
-        sort: 'id',
+        sort: 'subject',
         title: 'Sprint #(.+)'
       },
       stories: {
@@ -101,7 +102,13 @@ angular.module('kamine.app')
      * Load the configuration from local storage
      */
     methods.load = function () {
-      methods.set(localStorageService.get('config'));
+      var newConfig = localStorageService.get('config');
+      
+      if (null === newConfig) {
+        newConfig = defaults;
+      }
+
+      methods.set(newConfig);
     };
 
     /**
@@ -112,11 +119,20 @@ angular.module('kamine.app')
     };
 
     /**
-     * Save the configuration to local storage
+     * Set a new configuration object and add methods to it
      */
     methods.set = function (newConfig) {
       angular.copy(newConfig, config);
       angular.extend(config, methods);
+    };
+
+    methods.getParams = function () {
+      return {
+        scheme: function () { return config.scheme; },
+        host: function () { return config.host; },
+        port: function () { return config.port; },
+        key: function () { return config.key; }
+      };
     };
 
     methods.load();
