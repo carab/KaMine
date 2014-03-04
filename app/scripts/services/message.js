@@ -26,7 +26,7 @@ angular.module('kamine.app')
       }
     };
 
-    this.add = function (text, type, delay) {
+    this.add = function (type, text, values, delay) {
       if (this.disabled) {
         return;
       }
@@ -41,11 +41,12 @@ angular.module('kamine.app')
 
       this.messages[key] = {
         text: text,
+        values: values,
         type: type,
         key: key
       };
 
-      if (0 !== delay) {
+      if (angular.isDefined(delay)) {
         var that = this;
         $timeout(function () {
           that.remove(key);
@@ -55,20 +56,20 @@ angular.module('kamine.app')
       return this.messages[key];
     };
 
-    this.addDanger = function (text, delay) {
-      return this.add(text, 'danger', delay);
+    this.addDanger = function (text, values, delay) {
+      return this.add('danger', text, values, delay);
     };
 
-    this.addSuccess = function (text, delay) {
-      return this.add(text, 'success', delay);
+    this.addSuccess = function (text, values, delay) {
+      return this.add('success', text, values, delay);
     };
 
-    this.addWarning = function (text, delay) {
-      return this.add(text, 'warning', delay);
+    this.addWarning = function (text, values, delay) {
+      return this.add('warning', text, values, delay);
     };
 
-    this.addInfo = function (text, delay) {
-      return this.add(text, 'info', delay);
+    this.addInfo = function (text, values, delay) {
+      return this.add('info', text, values, delay);
     };
 
     this.enable = function () {

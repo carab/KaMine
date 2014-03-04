@@ -8,7 +8,8 @@ angular.module('kamine.app', [
   'pasvaz.bindonce',
   'pascalprecht.translate',
   'LocalStorageModule',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'wu.masonry'
 ])
   .config(function ($routeProvider) {
     $routeProvider

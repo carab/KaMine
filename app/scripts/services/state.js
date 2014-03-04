@@ -1,29 +1,50 @@
+
+
 'use strict';
 
 angular.module('kamine.app')
-  .service('state', function state ($http, config, User, Project, Story, Sprint) {
-    this.user = {};
-    this.project = {};
-    this.sprint = {};
-    this.story = {};
+  .service('state', function (config, User, Project, Story, Sprint, Message) {
+    var state = this;
 
-    this.projects = [];
-    this.sprints = [];
-    this.stories = [];
+    state.user = {};
+    state.project = {};
+    state.sprint = {};
+    state.story = {};
 
-    this.refresh = function () {
-      this.user = User.get({ 'id': 'current' });
+    state.projects = [];
+    state.sprints = [];
+    state.stories = [];
 
-      this.sprints = [];
-      this.projects = [];
-      this.stories = [];
-      this.project = {};
-      this.sprint = {};
-      this.story = {};
+    state.init = function () {
+      if (!angular.isString(config.key) || config.key.length === 0) {
+        Message.addWarning('message.missingKey');
+        return;
+      }
 
-      this.projects = Project.query({
-        'sort': config.projects.sort,
-        'limit': config.limit
-      });
+      state.loadUser()
+        .then(function () {
+          state.project = {};
+          state.sprint = {};
+          state.story = {};
+
+          state.sprints = [];
+          state.projects = [];
+          state.stories = [];
+
+          state.projects = Project.query({
+            'sort': config.projects.sort,
+            'limit': config.limit
+          });
+        }, function () {
+          Message.addDanger('message.unableToFindUser');
+        });
+    };
+
+    state.loadUser = function () {
+      return (state.user = User.get({ 'id': 'current' })).$promise;
+    };
+
+    state.loadProjects = function () {
+      return (state.user = User.get({ 'id': 'current' })).$promise;
     };
   });

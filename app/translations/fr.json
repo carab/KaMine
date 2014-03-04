@@ -54,5 +54,9 @@
         "immediate": "Immediat",
         "switchMode": "Changer de mode",
         "jsonHelp": "Copiez/collez si vous avez besoin d'exporter ou d'importer"
+    },
+    "message": {
+        "missingKey": "La clé API est manquante, merci de vérifier votre configuration.",
+        "unableToFindUser": "Impossible de récupérer votre compte, merci de vérifier votre configuration"
     }
 }

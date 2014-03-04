@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('kamine.app')
-  .controller('MessagesCtrl', function ($scope) {
-
+  .controller('MessagesCtrl', function ($scope, Message) {
+    $scope.Message = Message;
   });

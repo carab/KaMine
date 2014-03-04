@@ -1,11 +1,11 @@
 
 <div ng-controller="MessagesCtrl" class="messages">
-    <div bindonce ng-repeat="message in messages" class="alert" bo-class="'alert-' + message.type">
-        <button type="button" class="close" ng-click="message.remove()">
+    <div ng-repeat="message in Message.messages" class="alert" ng-class="'alert-' + message.type">
+        <button type="button" class="close" ng-click="Message.remove(message.key)">
             &times;
         </button>
-        <span class="alert-message" bo-html="message.text">
-
+        <span class="alert-message">
+            {{message.text | translate:message.values }}
         </span>
     </div>
 </div>

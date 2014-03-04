@@ -20,31 +20,32 @@
                     drop="column" drop-class="dropping-in-column"
                 >
 
-                    <div
-                        bindonce
-                        ng-repeat="story in state.stories | withStatus:column.statutes"
-                        class="story well"
-                        drag="story" drag-class="dragging-story"
-                    >
-                        <div class="story-top">
-                            <a bo-href="story.url">#<span class="story-id" bo-text="story.id"></span></a>
-                            -
-                            <span class="story-subject" bo-text="story.subject"></span>
-                        </div>
-
-                        <div class="story-middle">
-                            <span class="story-priority" bo-text="story.priority.name"></span> - <span class="story-estimated-hours" bo-text="story.estimated_hours"></span>h
-                        </div>
-
-                        <div class="story-bottom clearfix">
-                            <div class="story-icon">
-                                <i class="fa fa-warning fa-lg text-danger" ng-show="story.spent_time > story.estimated_hours"></i>
-                                <i class="fa fa-thumbs-down fa-lg text-danger" ng-show="story | hasStatus:'testko'"></i>
+                    <masonry>
+                        <div
+                            bindonce
+                            ng-repeat="story in state.stories | withStatus:column.statutes"
+                            class="story well masonry-brick"
+                            drag="story" drag-class="dragging-story"
+                        >
+                            <div class="story-top">
+                                <a bo-href="story.url">#<span class="story-id" bo-text="story.id"></span></a>
+                                -
+                                <span class="story-subject" bo-text="story.subject"></span>
                             </div>
-                            <div class="story-assigned-to" ng-bind="story.assigned_to.name"></div>
-                        </div>
-                    </div>
 
+                            <div class="story-middle">
+                                <span class="story-priority" bo-text="story.priority.name"></span> - <span class="story-estimated-hours" bo-text="story.estimated_hours"></span>h
+                            </div>
+
+                            <div class="story-bottom clearfix">
+                                <div class="story-icon">
+                                    <i class="fa fa-warning fa-lg text-danger" ng-show="story.spent_time > story.estimated_hours"></i>
+                                    <i class="fa fa-thumbs-down fa-lg text-danger" ng-show="story | hasStatus:'testko'"></i>
+                                </div>
+                                <div class="story-assigned-to" ng-bind="story.assigned_to.name"></div>
+                            </div>
+                        </div>
+                    </masonry>
                 </td>
             </tr>
         </tbody>

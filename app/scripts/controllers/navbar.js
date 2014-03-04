@@ -3,8 +3,9 @@
 angular.module('kamine.app')
   .controller('NavbarCtrl', function ($scope, $translate, $location, $modal, state, config, Sprint, Story) {
     $scope.state = state;
+    $scope.refresh = state.init;
 
-    state.refresh();
+    state.init();
 
     $scope.isActivePath = function(path) {
       return ($location.path().substr(0, path.length) === path);
