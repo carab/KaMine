@@ -13,15 +13,13 @@ angular.module('kamine.app', [
 ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/board', {
+      .when('/board/:project?/:sprint?', {
         templateUrl: 'partials/board.html',
-        controller: 'BoardCtrl',
-        reloadOnSearch: false
+        controller: 'BoardCtrl'
       })
-      .when('/chart', {
+      .when('/chart/:project?/:sprint?', {
         templateUrl: 'partials/chart.html',
-        controller: 'ChartCtrl',
-        reloadOnSearch: false
+        controller: 'ChartCtrl'
       })
       .otherwise({
         redirectTo: '/board'
