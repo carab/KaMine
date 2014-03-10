@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kamine.app')
-  .controller('NavbarCtrl', function ($scope, $translate, $location, $modal, $routeParams, state, $route) {
+  .controller('NavbarCtrl', function ($scope, $translate, $location, $modal, $routeParams, state) {
     $scope.state = state;
     $scope.refresh = state.init;
 
@@ -11,7 +11,7 @@ angular.module('kamine.app')
       var path = '/' + page;
       return ($location.path().substr(0, path.length) === path);
     };
-    console.log($route.current)
+    
     $scope.getPageUrl = function(page) {
       var url = '/' + page;
 

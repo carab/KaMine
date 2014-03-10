@@ -9,9 +9,29 @@ angular.module('kamine.app', [
   'pascalprecht.translate',
   'LocalStorageModule',
   'ui.bootstrap',
+  'ui.router',
   'wu.masonry'
 ])
-  .config(function ($routeProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/');
+
+  $stateProvider
+    .state('board', {
+      url: '/:project/:sprint/board',
+      templateUrl: 'partials/board.html',
+      controller: 'BoardCtrl'
+    })
+    .state('chart', {
+      url: '/:project/:sprint/chart',
+      templateUrl: 'partials/chart.html',
+      controller: 'ChartCtrl'
+    })
+    .state('help', {
+      url: '/:project',
+      templateUrl: 'partials/help.html',
+      controller: 'HelpCtrl'
+    });
+    /*/.config(function ($routeProvider) {
     $routeProvider
       .when('/board/:project?/:sprint?', {
         templateUrl: 'partials/board.html',
@@ -23,7 +43,7 @@ angular.module('kamine.app', [
       })
       .otherwise({
         redirectTo: '/board'
-      });
+      });/**/
   })
   .config(function ($translateProvider) {
     $translateProvider

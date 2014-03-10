@@ -4,8 +4,8 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li ng-class="{ active: isActivePage('board') }"><a ng-href="{{getPageUrl('board')}}" translate>navbar.board</a></li>
-            <li ng-class="{ active: isActivePage('chart') }"><a ng-href="{{getPageUrl('chart')}}" translate>navbar.chart</a></li>
+            <li ui-sref-active="active"><a ui-sref="board" translate>navbar.board</a></li>
+            <li ui-sref-active="active"><a ui-sref="chart" translate>navbar.chart</a></li>
         </ul>
         <div class="navbar-form navbar-right">
             <div class="form-group">

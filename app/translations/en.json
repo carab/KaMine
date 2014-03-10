@@ -58,5 +58,9 @@
     "message": {
         "missingKey": "The API key is missing, please check your configuration.",
         "unableToFindUser": "Unable to fetch user, please check your configuration"
+    },
+    "help": {
+        "selectProject": "Please select a project.",
+        "selectSprint": "Now, select a sprint."
     }
 }

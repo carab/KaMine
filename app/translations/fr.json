@@ -58,5 +58,9 @@
     "message": {
         "missingKey": "La clé API est manquante, merci de vérifier votre configuration.",
         "unableToFindUser": "Impossible de récupérer votre compte, merci de vérifier votre configuration"
+    },
+    "help": {
+        "selectProject": "Sélectionnez un projet.",
+        "selectSprint": "Sélectionnez maintenant un sprint."
     }
 }
