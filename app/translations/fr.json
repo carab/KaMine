@@ -61,6 +61,7 @@
     },
     "help": {
         "selectProject": "Sélectionnez un projet.",
-        "selectSprint": "Sélectionnez maintenant un sprint."
+        "selectSprint": "Sélectionnez maintenant un sprint.",
+        "selectView": "Et choisissez la vue souhaitée depuis le menu."
     }
 }

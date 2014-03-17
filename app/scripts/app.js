@@ -17,17 +17,27 @@ angular.module('kamine.app', [
 
   $stateProvider
     .state('board', {
-      url: '/:project/:sprint/board',
+      url: '/board/:project/:sprint',
       templateUrl: 'partials/board.html',
       controller: 'BoardCtrl'
     })
     .state('chart', {
-      url: '/:project/:sprint/chart',
+      url: '/chart/:project/:sprint',
       templateUrl: 'partials/chart.html',
       controller: 'ChartCtrl'
     })
-    .state('help', {
+    .state('selectproject', {
+      url: '/',
+      templateUrl: 'partials/help.html',
+      controller: 'HelpCtrl'
+    })
+    .state('selectsprint', {
       url: '/:project',
+      templateUrl: 'partials/help.html',
+      controller: 'HelpCtrl'
+    })
+    .state('selectview', {
+      url: '/:project/:sprint',
       templateUrl: 'partials/help.html',
       controller: 'HelpCtrl'
     });

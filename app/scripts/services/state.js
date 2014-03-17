@@ -3,97 +3,255 @@
 'use strict';
 
 angular.module('kamine.app')
-  .service('state', function ($rootScope, config, User, Project, Story, Sprint, Message) {
+  .service('state', function ($q, $rootScope, config, User, Project, Story, Sprint, Message) {
     var state = this;
 
-    state.user = {};
-    state.project = {};
-    state.sprint = {};
-    state.story = {};
+    state.user;
+    state.project;
+    state.sprint;
+    state.story;
 
-    state.projects = [];
-    state.sprints = [];
-    state.stories = [];
+    state.projects;
+    state.sprints;
+    state.stories;
 
-    state.init = function () {
-      if (!angular.isString(config.key) || config.key.length === 0) {
-        Message.addWarning('message.missingKey');
-        return;
-      }
-
-      state.loadUser()
-        .then(function () {
-          state.project = {};
-          state.sprint = {};
-          state.story = {};
-
-          state.sprints = [];
-          state.projects = [];
-          state.stories = [];
-
-          state.loadProjects();
-        }, function () {
-          Message.addDanger('message.unableToFindUser');
-        });
+    state.promises = {
+      user: $q.when(),
+      project: $q.when(),
+      sprint: $q.when(),
+      story: $q.when(),
+      projects: $q.when(),
+      sprints: $q.when(),
+      stories: $q.when()
     };
 
-    state.loadUser = function () {
-      return (state.user = User.get({ 'id': 'current' })).$promise;
+    state.fetchUser = function () {
+      return User.get({ 'id': 'current' });
     };
 
-    state.loadProjects = function () {
-      return (state.projects = Project.query({
+    state.fetchProjects = function () {
+      return Project.query({
         'sort': config.projects.sort,
         'limit': config.limit
-      })).$promise;
+      });
     };
 
-    state.loadSprints = function () {
-      return (state.sprints = Sprint.query({
+    state.fetchSprints = function () {
+      return Sprint.query({
         'project_id': state.project.id,
         'tracker_id': config.sprints.tracker,
         'sort': config.sprints.sort,
         'limit': config.limit,
         'status_id': '*'
-      })).$promise;
+      });
     };
 
-    state.loadStories = function () {
-      return (state.stories = Story.query({
+    state.fetchStories = function () {
+      return Story.query({
         'project_id': state.project.id,
         'parent_id': state.sprint.id,
         'tracker_id': config.stories.tracker,
         'sort': config.stories.sort,
         'limit': config.limit,
         'status_id': '*'
-      })).$promise;
+      });
+    };
+
+    state.loadUser = function (user) {
+      var deferred = $q.defer();
+      state.promises.user = deferred.promise;
+
+      state.user = state.fetchUser();
+
+      state.user.$promise.then(function (d) {
+        deferred.resolve(d);
+      }, function (d) {
+        deferred.reject(d);
+      });
+
+      return state.promises.user;
+    };
+
+    state.loadProjects = function () {
+      var deferred = $q.defer();
+      state.promises.projects = deferred.promise;
+
+      state.promises.user.then(function (d) {
+        state.projects = state.fetchProjects();
+
+        state.projects.$promise.then(function (d) {
+          deferred.resolve(d);
+        }, function (d) {
+          deferred.reject(d);
+        });
+      }, function (d) {
+          deferred.reject(d);
+      });
+
+      return state.promises.projects;
+    };
+
+    state.loadSprints = function () {
+      var deferred = $q.defer();
+      state.promises.sprints = deferred.promise;
+
+      state.promises.project.then(function (d) {
+        state.sprints = state.fetchSprints();
+
+        state.sprints.$promise.then(function (d) {
+          deferred.resolve(d);
+        }, function (d) {
+          deferred.reject(d);
+        });
+      }, function (d) {
+          deferred.reject(d);
+      });
+
+      return state.promises.sprints;
+    };
+
+    state.loadStories = function () {
+      var deferred = $q.defer();
+      state.promises.stories = deferred.promise;
+
+      state.promises.sprint.then(function (d) {
+        state.stories = state.fetchStories();
+
+        state.stories.$promise.then(function (d) {
+          deferred.resolve(d);
+        }, function (d) {
+          deferred.reject(d);
+        });
+      }, function (d) {
+          deferred.reject(d);
+      });
+
+      return state.promises.stories;
     };
 
     state.setProject = function (project) {
-      state.project = project;
-      state.loadSprints();
+      var deferred = $q.defer();
+      state.promises.project = deferred.promise;
+
+      state.promises.projects.then(function (d) {
+        project = state.findProject(project.id);
+        if (angular.isDefined(project)) {
+          state.project = project;
+          deferred.resolve(d);
+        } else {
+          deferred.reject('project_not_found');
+        }
+      }, function (d) {
+          deferred.reject(d);
+      });
+
+      return state.promises.project;
     };
-    // Update the selected project and sprint when the route params change
-    $rootScope.$on('$routeUpdate', function (event, route) {
-      if (route.params.project !== state.project.id) {
+
+    state.setSprint = function (sprint) {
+      var deferred = $q.defer();
+      state.promises.sprint = deferred.promise;
+
+      state.promises.sprints.then(function (d) {
+        sprint = state.findSprint(sprint.id);
+
+        if (angular.isDefined(sprint)) {
+          state.sprint = sprint;
+          deferred.resolve(d);
+        } else {
+          deferred.reject('sprint_not_found');
+        }
+      }, function (d) {
+          deferred.reject(d);
+      });
+
+      return state.promises.sprint;
+    };
+
+    state.setStory = function (story) {
+      var deferred = $q.defer();
+      state.promises.story = deferred.promise;
+
+      state.promises.stories.then(function (d) {
+        story = state.findStory(story.id);
+
+        if (angular.isDefined(story)) {
+          state.story = story;
+          deferred.resolve(d);
+        } else {
+          deferred.reject('story_not_found');
+        }
+      }, function (d) {
+          deferred.reject(d);
+      });
+
+      return state.promises.story;
+    };
+
+    state.findProject = function (id) {
+      for (var index in state.projects) {
+        if (state.projects[index].id == id) {
+          return state.projects[index];
+        }
+      }
+    };
+
+    state.findSprint = function (id) {
+      for (var index in state.sprints) {
+        if (state.sprints[index].id == id) {
+          return state.sprints[index];
+        }
+      }
+    };
+
+    state.findStory = function (id) {
+      for (var index in state.stories) {
+        if (state.stories[index].id == id) {
+          return state.stories[index];
+        }
+      }
+    };
+
+    state.refresh = function () {
+      if (!angular.isString(config.key) || config.key.length === 0) {
+        Message.addWarning('message.missingKey');
+        return;
+      }
+
+      state.project = {};
+      state.sprint = {};
+      state.story = {};
+
+      state.sprints = [];
+      state.projects = [];
+      state.stories = [];
+
+      state.loadUser();
+      state.loadProjects();
+    };
+
+    // Update the selected project and sprint when the state changes
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+      if (toParams.project != fromParams.project) {
         state.project = {};
         state.sprint = {};
-        angular.forEach(state.projects, function (project) {
-          if (project.id === route.params.project) {
-            state.project = project;
-            state.loadSprints();
-            return false;
-          }
-        });
-      } else if (route.params.sprint !== state.sprint.id) {
+        state.story = {};
+
+        state.sprints = [];
+        state.stories = [];
+
+        state.setProject(new Project({id: toParams.project }));
+        state.loadSprints();
+      }
+
+      if (toParams.sprint !== fromParams.sprint) {
         state.sprint = {};
-        angular.forEach(state.sprints, function (sprint) {
-          if (sprint.id === route.params.sprint) {
-            state.sprint = sprint;
-            state.loadStories();
-            return false;
-          }
-        });
+        state.story = {};
+
+        state.stories = [];
+
+        state.setSprint(new Sprint({ id: toParams.sprint }));
+        state.loadStories();
       }
     });
   });

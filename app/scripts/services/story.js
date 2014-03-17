@@ -10,8 +10,11 @@ angular.module('kamine.app')
           var stories = angular.fromJson(data).issues;
 
           angular.forEach(stories, function (story) {
-            story.status.name = config.getStatusById(story.status.id).name;
-            story.priority.name = config.getPriorityById(story.priority.id).name;
+            var status = config.getStatusById(story.status.id),
+                priority = config.getPriorityById(story.priority.id);
+
+            story.status.name = (angular.isDefined(status)) ? status.name : undefined;
+            story.priority.name = (angular.isDefined(priority)) ? priority.name : undefined;
           });
 
           return stories;

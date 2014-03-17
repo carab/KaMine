@@ -2,5 +2,6 @@
 
 angular.module('kamine.app')
   .controller('HelpCtrl', function ($scope, $stateParams) {
-    $scope.isProjectSelected = ($stateParams.project.length > 0);
+    $scope.hasSelectedProject = angular.isDefined($stateParams.project);
+    $scope.hasSelectedSprint = angular.isDefined($stateParams.sprint);
   });
