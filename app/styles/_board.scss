@@ -7,4 +7,51 @@
     .dropping-in-column {
         @extend .bg-warning;
     }
+
+    .table {
+        > thead  {
+            > tr {
+                > th {
+                    text-align: center;
+                }
+            }
+        }
+
+        > tbody  {
+            > tr {
+                > td {
+                    padding: 4px;
+                }
+            }
+        }
+    }
+
+    .story {
+        width: 50%;
+    }
+
+    .story-inner {
+        padding: 4px;
+    }
+
+    .story-assigned-to {
+        display: none;
+    }
+
+    .story-middle {
+        display: none;
+    }
+
+    .well {
+        padding: 3px;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+  .board {
+    .story {
+        width: 100%;
+    }
+  }
 }

@@ -33,7 +33,13 @@ angular.module('kamine.app')
 
     $scope.setSprint = function (sprint) {
       //$state.go($state.current.name, {
-      $state.go('selectview', {
+      var stateName = $state.current.name;
+
+      if (stateName === 'selectsprint') {
+        stateName = 'selectview';
+      }
+
+      $state.go(stateName, {
         project: state.project.id,
         sprint: sprint.id
       });

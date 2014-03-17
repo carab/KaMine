@@ -58,7 +58,9 @@ TODO
 * Sync between URL and selected project/sprint.
 * Multiple profiles for configuration.
 * Form to add spent time and comment when the story status is changed.
-* Burndown chart.
+* Filters on board view.
+* Stories with background color for each users.
+* Burndown chart view.
 * Buttons to create sprints and stories.
 * Manage the product backlog
 * Manage the sprint backlog
