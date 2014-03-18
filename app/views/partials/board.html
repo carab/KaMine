@@ -1,5 +1,12 @@
 
 <div class="board">
+    <div class="board-filters">
+        <select class="filter user-filter"
+                multiple
+                ng-model="filters.assigned_to.id"
+                ng-options="user.id as user.name for user in (state.stories | userList) track by user.id">
+        </select>
+    </div>
     <table class="board-table table table-bordered">
         <thead>
             <tr>
@@ -20,19 +27,19 @@
                     drop="column" drop-class="dropping-in-column"
                 >
 
-                    <div masonry="{ transitionDuration: 0, gutter: 0 }">
-                        <div bindonce ng-repeat="story in state.stories | withStatus:column.statutes" class="story masonry-brick" drag="story" drag-class="dragging-story">
+                    <div masonry="{ transitionDuration: '400ms', gutter: 0, isResizeBound: false, isLayoutInstant: false }">
+                        <div ng-repeat="story in state.stories | filter:filters | withStatus:column.statutes" class="story masonry-brick" drag="story" drag-class="dragging-story">
                             <div class="story-inner">
                                 <div class="well">
                                     <div class="story-top">
                                         <div class="story-url">
-                                            <a bo-href="story.url">#<span class="story-id" bo-text="story.id"></span></a>
+                                            <a ng-href="story.url">#<span class="story-id">{{story.id}}</span></a>
                                         </div>
-                                        <div class="story-subject" bo-text="story.subject"></div>
+                                        <div class="story-subject">{{story.subject}}</div>
                                     </div>
 
                                     <div class="story-middle">
-                                        <span class="story-priority" bo-text="story.priority.name"></span> - <span class="story-estimated-hours" bo-text="story.estimated_hours"></span>h
+                                        <span class="story-priority">{{story.priority.name}}</span> - <span class="story-estimated-hours">{{story.estimated_hours}}</span>h
                                     </div>
 
                                     <div class="story-bottom clearfix">

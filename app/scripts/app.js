@@ -7,7 +7,7 @@ angular.module('kamine.app', [
   'ngRoute',
   'pasvaz.bindonce',
   'pascalprecht.translate',
-  'LocalStorageModule',
+  'LocalStorageModule', // To save config on user machine
   'ui.bootstrap',
   'ui.router',
   'wu.masonry'
