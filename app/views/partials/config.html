@@ -88,10 +88,13 @@
             <fieldset>
                 <legend translate>config.statutes</legend>
                 <div class="row">
-                    <div class="col-xs-2" ng-repeat="status in config.statutes">
+                    <div class="col-xs-4" ng-repeat="status in config.statutes">
                         <div class="form-group">
                             <label translate>config.{{status.name}}</label>
-                            <input type="text" ng-model="status.id" class="form-control"/>
+                            <select class="form-control"
+                                    ng-model="status.id"
+                                    ng-options="status.id as status.name for status in state.statutes">
+                            </select>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@
         <select class="filter user-filter"
                 multiple
                 ng-model="filters.assigned_to.id"
-                ng-options="user.id as user.name for user in (state.stories | userList) track by user.id">
+                ng-options="user.id as user.name for user in (state.stories | userList)">
         </select>
     </div>
     <table class="board-table table table-bordered">

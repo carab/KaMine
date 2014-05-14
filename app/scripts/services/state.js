@@ -3,7 +3,7 @@
 'use strict';
 
 angular.module('kamine.app')
-  .service('state', function ($q, $rootScope, config, User, Project, Story, Sprint, Message) {
+  .service('state', function ($q, $rootScope, config, User, Project, Story, Sprint, Status, Message) {
     var state = this;
 
     state.user;
@@ -15,14 +15,23 @@ angular.module('kamine.app')
     state.sprints;
     state.stories;
 
+    state.statutes;
+    state.priorities;
+    state.trackers;
+
     state.promises = {
       user: $q.when(),
       project: $q.when(),
       sprint: $q.when(),
       story: $q.when(),
+
       projects: $q.when(),
       sprints: $q.when(),
-      stories: $q.when()
+      stories: $q.when(),
+
+      statutes: $q.when(),
+      priorities: $q.when(),
+      trackers: $q.when()
     };
 
     state.fetchUser = function () {
@@ -55,6 +64,10 @@ angular.module('kamine.app')
         'limit': config.limit,
         'status_id': '*'
       });
+    };
+
+    state.fetchStatutes = function () {
+      return Status.query();
     };
 
     state.loadUser = function (user) {
@@ -127,6 +140,20 @@ angular.module('kamine.app')
       });
 
       return state.promises.stories;
+    };
+
+    state.loadStatutes = function () {
+      var d = $q.defer();
+      state.promises.statutes = d.promise;
+      state.statutes = state.fetchStatutes();
+
+      state.statutes.$promise.then(function (data) {
+        d.resolve(data);
+      }, function (data) {
+        d.reject(data);
+      });
+
+      return state.promises.statutes;
     };
 
     state.setProject = function (project) {

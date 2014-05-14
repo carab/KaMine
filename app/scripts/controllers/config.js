@@ -1,12 +1,16 @@
 'use strict';
 
 angular.module('kamine.app')
-  .controller('ConfigCtrl', function ($scope, $modalInstance, localStorageService, config) {
+  .controller('ConfigCtrl', function ($scope, $modalInstance, localStorageService, config, state) {
     $scope.config = angular.copy(config);
     $scope.json = {
       value: angular.toJson($scope.config),
       enabled: false
     };
+
+    $scope.state = state;
+    
+    state.loadStatutes();
 
     $scope.toggleJsonEnabled = function () {
       $scope.json.enabled = !$scope.json.enabled;
