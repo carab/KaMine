@@ -3,7 +3,7 @@
 'use strict';
 
 angular.module('kamine.app')
-  .service('state', function ($q, $rootScope, config, User, Project, Story, Sprint, Status, Message) {
+  .service('state', function ($q, $rootScope, config, User, Project, Story, Sprint, Status, Priority, Message) {
     var state = this;
 
     state.user;
@@ -154,6 +154,20 @@ angular.module('kamine.app')
       });
 
       return state.promises.statutes;
+    };
+
+    state.loadPriorities = function () {
+      var d = $q.defer();
+      state.promises.priorities = d.promise;
+      state.priorities = Priority.list();
+
+      state.priorities.$promise.then(function (data) {
+        d.resolve(data);
+      }, function (data) {
+        d.reject(data);
+      });
+
+      return state.promises.priorities;
     };
 
     state.setProject = function (project) {

@@ -9,8 +9,9 @@ angular.module('kamine.app')
     };
 
     $scope.state = state;
-    
+
     state.loadStatutes();
+    state.loadPriorities();
 
     $scope.toggleJsonEnabled = function () {
       $scope.json.enabled = !$scope.json.enabled;

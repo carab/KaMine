@@ -105,7 +105,10 @@
                     <div class="col-xs-3" ng-repeat="priority in config.priorities">
                         <div class="form-group">
                             <label translate>config.{{priority.name}}</label>
-                            <input type="text" ng-model="priority.id" class="form-control"/>
+                            <select class="form-control"
+                                    ng-model="priority.id"
+                                    ng-options="priority.id as priority.name for priority in state.priorities">
+                            </select>
                         </div>
                     </div>
                 </div>
