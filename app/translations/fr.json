@@ -45,7 +45,7 @@
         "statutes": "Statuts",
         "priorities": "Priorités",
         "limit": "Maximum d'objets",
-        "sort": "Tri",
+        "sort": "Trier par",
         "tracker": "Tracker",
         "title": "Titre",
         "low": "Bas",
@@ -53,7 +53,23 @@
         "high": "Elevé",
         "immediate": "Immediat",
         "switchMode": "Changer de mode",
-        "jsonHelp": "Copiez/collez si vous avez besoin d'exporter ou d'importer"
+        "jsonHelp": "Copiez/collez si vous avez besoin d'exporter ou d'importer",
+        "fields": {
+            "project": {
+                "id": "ID",
+                "name": "Nom"
+            },
+            "sprint": {
+                "id": "ID",
+                "subject": "Titre"
+            },
+            "story": {
+                "id": "ID",
+                "subject": "Titre",
+                "author": "Auteur",
+                "priority": "Priorité"
+            }
+        }
     },
     "message": {
         "missingKey": "La clé API est manquante, merci de vérifier votre configuration.",

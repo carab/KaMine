@@ -46,7 +46,10 @@
                             <legend translate>config.projects</legend>
                             <div class="form-group">
                                 <label translate>config.sort</label>
-                                <input type="text" ng-model="config.projects.sort" class="form-control"/>
+                                <select class="form-control"
+                                        ng-model="config.projects.sort"
+                                        ng-options="'config.fields.project.' + field|translate for field in fields.project">
+                                </select>
                             </div>
                         </fieldset>
                     </div>
@@ -66,7 +69,10 @@
                             </div>
                             <div class="form-group">
                                 <label translate>config.sort</label>
-                                <input type="text" ng-model="config.sprints.sort" class="form-control"/>
+                                <select class="form-control"
+                                        ng-model="config.sprints.sort"
+                                        ng-options="'config.fields.sprint.' + field|translate for field in fields.sprint">
+                                </select>
                             </div>
                         </fieldset>
                     </div>
@@ -86,7 +92,10 @@
                             </div>
                             <div class="form-group">
                                 <label translate>config.sort</label>
-                                <input type="text" ng-model="config.stories.sort" class="form-control"/>
+                                <select class="form-control"
+                                        ng-model="config.stories.sort"
+                                        ng-options="'config.fields.story.' + field|translate for field in fields.story">
+                                </select>
                             </div>
                         </fieldset>
                     </div>

@@ -7,8 +7,7 @@ angular.module('kamine.app')
         method: 'GET',
         isArray: true,
         transformResponse: function (data) {
-          var statutes = angular.fromJson(data).issue_statuses;
-          return statutes;
+          return angular.fromJson(data).issue_statuses;
         }
       }
     });

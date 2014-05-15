@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kamine.app')
-  .controller('ConfigCtrl', function ($scope, $modalInstance, localStorageService, config, state) {
+  .controller('ConfigCtrl', function ($scope, $modalInstance, localStorageService, config, state, Project) {
     $scope.config = angular.copy(config);
     $scope.json = {
       value: angular.toJson($scope.config),
@@ -13,6 +13,12 @@ angular.module('kamine.app')
     state.loadStatutes();
     state.loadPriorities();
     state.loadTrackers();
+
+    $scope.fields = {
+      project: ['id', 'name'],
+      sprint: ['id', 'subject'],
+      story: ['id', 'subject', 'author', 'priority']
+    };
 
     $scope.toggleJsonEnabled = function () {
       $scope.json.enabled = !$scope.json.enabled;

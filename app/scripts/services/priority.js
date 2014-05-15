@@ -7,8 +7,7 @@ angular.module('kamine.app')
         method: 'GET',
         isArray: true,
         transformResponse: function (data) {
-          var priorities = angular.fromJson(data).issue_priorities;
-          return priorities;
+          return angular.fromJson(data).issue_priorities;
         }
       }
     });

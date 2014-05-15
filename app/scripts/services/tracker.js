@@ -7,8 +7,7 @@ angular.module('kamine.app')
         method: 'GET',
         isArray: true,
         transformResponse: function (data) {
-          var trackers = angular.fromJson(data).trackers;
-          return trackers;
+          return angular.fromJson(data).trackers;
         }
       }
     });

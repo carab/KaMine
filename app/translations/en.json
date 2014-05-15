@@ -45,7 +45,7 @@
         "statutes": "Statutes",
         "priorities": "Priorities",
         "limit": "Max items",
-        "sort": "Sort",
+        "sort": "Sort by",
         "tracker": "Tracker",
         "title": "Title",
         "low": "Low",
@@ -53,7 +53,23 @@
         "high": "High",
         "immediate": "Immediate",
         "switchMode": "Switch mode",
-        "jsonHelp": "Copy and paste if you need to export/import"
+        "jsonHelp": "Copy and paste if you need to export/import",
+        "fields": {
+            "project": {
+                "id": "ID",
+                "name": "Name"
+            },
+            "sprint": {
+                "id": "ID",
+                "subject": "Title"
+            },
+            "story": {
+                "id": "ID",
+                "subject": "Title",
+                "author": "Author",
+                "priority": "Priority"
+            }
+        }
     },
     "message": {
         "missingKey": "The API key is missing, please check your configuration.",

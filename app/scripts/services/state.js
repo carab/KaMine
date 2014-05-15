@@ -86,19 +86,19 @@ angular.module('kamine.app')
     };
 
     state.loadProjects = function () {
-      var deferred = $q.defer();
-      state.promises.projects = deferred.promise;
+      var d = $q.defer();
+      state.promises.projects = d.promise;
 
-      state.promises.user.then(function (d) {
+      state.promises.user.then(function (data) {
         state.projects = state.fetchProjects();
 
-        state.projects.$promise.then(function (d) {
-          deferred.resolve(d);
-        }, function (d) {
-          deferred.reject(d);
+        state.projects.$promise.then(function (data) {
+          d.resolve(data);
+        }, function (data) {
+          d.reject(data);
         });
-      }, function (d) {
-          deferred.reject(d);
+      }, function (data) {
+          d.reject(data);
       });
 
       return state.promises.projects;
