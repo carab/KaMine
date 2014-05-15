@@ -55,7 +55,10 @@
                             <legend translate>config.sprints</legend>
                             <div class="form-group">
                                 <label translate>config.tracker</label>
-                                <input type="text" ng-model="config.sprints.tracker" class="form-control"/>
+                                <select class="form-control"
+                                        ng-model="config.sprints.tracker"
+                                        ng-options="tracker.id as tracker.name for tracker in state.trackers">
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label translate>config.title</label>
@@ -72,7 +75,10 @@
                             <legend translate>config.stories</legend>
                             <div class="form-group">
                                 <label translate>config.tracker</label>
-                                <input type="text" ng-model="config.stories.tracker" class="form-control"/>
+                                <select class="form-control"
+                                        ng-model="config.stories.tracker"
+                                        ng-options="tracker.id as tracker.name for tracker in state.trackers">
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label translate>config.title</label>
