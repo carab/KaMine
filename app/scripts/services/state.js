@@ -34,47 +34,11 @@ angular.module('kamine.app')
       trackers: $q.when()
     };
 
-    state.fetchUser = function () {
-      return User.get({ 'id': 'current' });
-    };
-
-    state.fetchProjects = function () {
-      return Project.query({
-        'sort': config.projects.sort,
-        'limit': config.limit
-      });
-    };
-
-    state.fetchSprints = function () {
-      return Sprint.query({
-        'project_id': state.project.id,
-        'tracker_id': config.sprints.tracker,
-        'sort': config.sprints.sort,
-        'limit': config.limit,
-        'status_id': '*'
-      });
-    };
-
-    state.fetchStories = function () {
-      return Story.query({
-        'project_id': state.project.id,
-        'parent_id': state.sprint.id,
-        'tracker_id': config.stories.tracker,
-        'sort': config.stories.sort,
-        'limit': config.limit,
-        'status_id': '*'
-      });
-    };
-
-    state.fetchStatutes = function () {
-      return Status.query();
-    };
-
     state.loadUser = function (user) {
       var deferred = $q.defer();
       state.promises.user = deferred.promise;
 
-      state.user = state.fetchUser();
+      state.user = User.current();
 
       state.user.$promise.then(function (d) {
         deferred.resolve(d);
@@ -90,7 +54,7 @@ angular.module('kamine.app')
       state.promises.projects = d.promise;
 
       state.promises.user.then(function (data) {
-        state.projects = state.fetchProjects();
+        state.projects = Project.list();
 
         state.projects.$promise.then(function (data) {
           d.resolve(data);
@@ -109,7 +73,9 @@ angular.module('kamine.app')
       state.promises.sprints = deferred.promise;
 
       state.promises.project.then(function (d) {
-        state.sprints = state.fetchSprints();
+        state.sprints = Sprint.list({
+          'project_id': state.project.id
+        });
 
         state.sprints.$promise.then(function (d) {
           deferred.resolve(d);
@@ -128,7 +94,10 @@ angular.module('kamine.app')
       state.promises.stories = deferred.promise;
 
       state.promises.sprint.then(function (d) {
-        state.stories = state.fetchStories();
+        state.stories = Story.list({
+          'project_id': state.project.id,
+          'parent_id': state.sprint.id
+        });
 
         state.stories.$promise.then(function (d) {
           deferred.resolve(d);
@@ -145,7 +114,7 @@ angular.module('kamine.app')
     state.loadStatutes = function () {
       var d = $q.defer();
       state.promises.statutes = d.promise;
-      state.statutes = state.fetchStatutes();
+      state.statutes = Status.list();
 
       state.statutes.$promise.then(function (data) {
         d.resolve(data);

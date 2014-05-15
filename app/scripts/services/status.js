@@ -3,7 +3,7 @@
 angular.module('kamine.app')
   .factory('Status', function ($resource, config) {
     return $resource('/api/issue_statuses/:id.json', config.getParams(), {
-      query: {
+      list: {
         method: 'GET',
         isArray: true,
         transformResponse: function (data) {

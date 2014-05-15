@@ -3,9 +3,15 @@
 angular.module('kamine.app')
   .factory('Story', function ($resource, config) {
     return $resource('/api/issues/:id.json', config.getParams(), {
-      query: {
+      list: {
         method: 'GET',
         isArray: true,
+        params: {
+          'tracker_id': config.stories.tracker,
+          'sort': config.stories.sort,
+          'limit': config.limit,
+          'status_id': '*'
+        },
         transformResponse: function (data) {
           var stories = angular.fromJson(data).issues;
 

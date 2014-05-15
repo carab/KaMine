@@ -15,7 +15,6 @@ angular.module('kamine.app')
           ids.push(story.assigned_to.id);
         }
       });
-        console.log(users)
 
       return users;
     };
