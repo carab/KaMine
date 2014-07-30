@@ -131,7 +131,8 @@ angular.module('kamine.app')
         scheme: function () { return config.scheme; },
         host: function () { return config.host; },
         port: function () { return config.port; },
-        key: function () { return config.key; }
+        key: function () { return config.key; },
+        id: '@id'
       };
     };
 

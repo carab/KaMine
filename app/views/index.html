@@ -13,6 +13,9 @@
         <!-- build:css({.tmp,app}) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
+        <!-- build:css({.tmp,app}) styles/vendor.css -->
+        <link rel="stylesheet" href="bower_components/bootstrap-multiselect/css/bootstrap-multiselect.css" type="text/css"/>
+        <!-- endbuild -->
     </head>
     <body ng-app="kamine.app">
         <!--[if lt IE 7]>
@@ -85,6 +88,8 @@
         <script src="bower_components/imagesloaded/imagesloaded.js"></script>
         <script src="bower_components/angular-masonry/angular-masonry.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -110,9 +115,11 @@
         <script src="scripts/controllers/help.js"></script>
         <script src="scripts/directives/drag.js"></script>
         <script src="scripts/directives/drop.js"></script>
+        <script src="scripts/directives/multiselect.js"></script>
         <script src="scripts/filters/hasstatus.js"></script>
         <script src="scripts/filters/withstatus.js"></script>
         <script src="scripts/filters/userlist.js"></script>
+        <script src="scripts/filters/filter-stories.js"></script>
         <!-- endbuild -->
     </body>
 </html>

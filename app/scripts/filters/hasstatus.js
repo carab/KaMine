@@ -8,6 +8,6 @@ angular.module('kamine.app')
         statutes = [statutes];
       }
 
-      return (statutes.indexOf(story.status.name) !== -1);
+      return (statutes.indexOf(story.status) !== -1);
     };
   });

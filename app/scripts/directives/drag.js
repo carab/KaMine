@@ -4,8 +4,6 @@ angular.module('kamine.app')
   .directive('drag', function ($rootScope) {
     function dragStart(evt, element, dragClass) {
       element.addClass(dragClass);
-      evt.dataTransfer.setData('id', evt.target.id);
-      evt.dataTransfer.effectAllowed = 'move';
     }
 
     function dragEnd(evt, element, dragClass) {

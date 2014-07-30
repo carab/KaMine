@@ -19,8 +19,8 @@ angular.module('kamine.app')
             var status = config.getStatusById(story.status.id),
                 priority = config.getPriorityById(story.priority.id);
 
-            story.status.name = (angular.isDefined(status)) ? status.name : undefined;
-            story.priority.name = (angular.isDefined(priority)) ? priority.name : undefined;
+            story.status = (angular.isDefined(status)) ? status.name : undefined;
+            story.priority = (angular.isDefined(priority)) ? priority.name : undefined;
           });
 
           return stories;
@@ -30,9 +30,11 @@ angular.module('kamine.app')
         method: 'PUT',
         transformRequest: function (story) {
           var data = {
-            'status_id': config.getStatusByName(story.status.name).id,
-            'priority_id': config.getPriorityByName(story.priority.name).id
-          };
+            'issue': {
+                'status_id': config.getStatusByName(story.status).id,
+                'priority_id': config.getPriorityByName(story.priority).id
+              }
+            };
 
           return angular.toJson(data);
         }

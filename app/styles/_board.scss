@@ -4,8 +4,8 @@
         table-layout: fixed;
     }
 
-    .dropping-in-column {
-        @extend .bg-warning;
+    .board-filters {
+        margin: 1em 0;
     }
 
     .table {
@@ -21,6 +21,10 @@
             > tr {
                 > td {
                     padding: 4px;
+
+                    &.is-dragging-over {
+                        @extend .bg-warning;
+                    }
                 }
             }
         }

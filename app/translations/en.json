@@ -20,7 +20,10 @@
         "inprogress": "In progress",
         "totest": "To test",
         "testing": "Testing",
-        "done": "Done"
+        "done": "Done",
+        "filter": {
+            "user": "-- Select a user --"
+        }
     },
     "config": {
         "save": "Save",
@@ -79,5 +82,8 @@
         "selectProject": "Please select a project.",
         "selectSprint": "Now, select a sprint.",
         "selectView": "And select a view from the menu."
+    },
+    "multiselect": {
+        "none": "No selection"
     }
 }

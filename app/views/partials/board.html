@@ -1,11 +1,15 @@
 
 <div class="board">
     <div class="board-filters">
-        <select class="filter user-filter"
-                multiple
-                ng-model="filters.assigned_to.id"
-                ng-options="user.id as user.name for user in (state.stories | userList)">
-        </select>
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <select class="form-control filter is-user"
+                    multiple
+                    ng-model="filters.assigned_to.id"
+                    ng-options="user.id as user.name for user in (state.stories | userList)">
+                </select>
+            </div>
+        </form>
     </div>
     <table class="board-table table table-bordered">
         <thead>
@@ -24,11 +28,11 @@
                     ng-repeat="column in columns" 
                     class="board-column" 
                     ng-class="column.name" 
-                    drop="column" drop-class="dropping-in-column"
+                    drop="column" drop-class="is-dragging-over"
                 >
 
                     <div masonry="{ transitionDuration: '400ms', gutter: 0, isResizeBound: false, isLayoutInstant: false }">
-                        <div ng-repeat="story in state.stories | filter:filters | withStatus:column.statutes" class="story masonry-brick" drag="story" drag-class="dragging-story">
+                        <div ng-repeat="story in state.stories | filter:filters | withStatus:column.statutes" class="story masonry-brick" drag="story" drag-class="is-dragged">
                             <div class="story-inner">
                                 <div class="well">
                                     <div class="story-top">
