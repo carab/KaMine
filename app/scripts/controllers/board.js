@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kamine.app')
-  .controller('BoardCtrl', function ($rootScope, $scope, board, state, config) {
+  .controller('BoardCtrl', function ($rootScope, $scope, board, state, config, Message) {
     $scope.columns = board.columns;
     $scope.state = state;
     $scope.filters = {};
@@ -36,9 +36,14 @@ angular.module('kamine.app')
       }
 
       story.status = newStatus.name;
-      story.$save();
 
-      console.log(story);
-      console.log(newStatus);
+      // Save it and get it again to check if the status has been updated
+      story.$save(function () {
+        story.$get(function () {
+          if (story.status != newStatus.name) {
+            Message.addDanger('message.statusUpdateFail');
+          }
+        });
+      });
     });
   });

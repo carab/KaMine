@@ -3,7 +3,7 @@
 angular.module('kamine.app')
   .factory('Story', function ($resource, config) {
     return $resource('/api/issues/:id.json', config.getParams(), {
-      list: {
+      query: {
         method: 'GET',
         isArray: true,
         params: {
@@ -24,6 +24,19 @@ angular.module('kamine.app')
           });
 
           return stories;
+        }
+      },
+      get: {
+        method: 'GET',
+        transformResponse: function (data) {
+          var story = angular.fromJson(data).issue,
+              status = config.getStatusById(story.status.id),
+              priority = config.getPriorityById(story.priority.id);
+
+          story.status = (angular.isDefined(status)) ? status.name : undefined;
+          story.priority = (angular.isDefined(priority)) ? priority.name : undefined;
+
+          return story;
         }
       },
       save: {

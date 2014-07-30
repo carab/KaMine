@@ -3,7 +3,7 @@
 angular.module('kamine.app')
   .factory('Sprint', function ($resource, config) {
     return $resource('/api/issues/:id.json', config.getParams(), {
-      list: {
+      query: {
         method: 'GET',
         isArray: true,
         params: {

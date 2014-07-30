@@ -54,7 +54,7 @@ angular.module('kamine.app')
       state.promises.projects = d.promise;
 
       state.promises.user.then(function (data) {
-        state.projects = Project.list();
+        state.projects = Project.query();
 
         state.projects.$promise.then(function (data) {
           d.resolve(data);
@@ -73,7 +73,7 @@ angular.module('kamine.app')
       state.promises.sprints = deferred.promise;
 
       state.promises.project.then(function (d) {
-        state.sprints = Sprint.list({
+        state.sprints = Sprint.query({
           'project_id': state.project.id
         });
 
@@ -94,7 +94,7 @@ angular.module('kamine.app')
       state.promises.stories = deferred.promise;
 
       state.promises.sprint.then(function (d) {
-        state.stories = Story.list({
+        state.stories = Story.query({
           'project_id': state.project.id,
           'parent_id': state.sprint.id
         });
@@ -114,7 +114,7 @@ angular.module('kamine.app')
     state.loadStatutes = function () {
       var d = $q.defer();
       state.promises.statutes = d.promise;
-      state.statutes = Status.list();
+      state.statutes = Status.query();
 
       state.statutes.$promise.then(function (data) {
         d.resolve(data);
@@ -128,7 +128,7 @@ angular.module('kamine.app')
     state.loadPriorities = function () {
       var d = $q.defer();
       state.promises.priorities = d.promise;
-      state.priorities = Priority.list();
+      state.priorities = Priority.query();
 
       state.priorities.$promise.then(function (data) {
         d.resolve(data);
@@ -142,7 +142,7 @@ angular.module('kamine.app')
     state.loadTrackers = function () {
       var d = $q.defer();
       state.promises.trackers = d.promise;
-      state.trackers = Tracker.list();
+      state.trackers = Tracker.query();
 
       state.trackers.$promise.then(function (data) {
         d.resolve(data);
