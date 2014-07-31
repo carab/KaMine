@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kamine.app')
-  .factory('Story', function ($resource, config) {
+  .factory('Story', function ($resource, $filter, config) {
     return $resource('/api/issues/:id.json', config.getParams(), {
       query: {
         method: 'GET',
@@ -13,18 +13,23 @@ angular.module('kamine.app')
           'status_id': '*'
         },
         transformResponse: function (data) {
-          var stories = angular.fromJson(data).issues;
+          var stories = [],
+              regex = new RegExp(config.stories.title);
 
-          angular.forEach(stories, function (story) {
-            var status = config.getStatusById(story.status.id),
-                priority = config.getPriorityById(story.priority.id);
+          angular.forEach(angular.fromJson(data).issues, function (story) {
+            if (regex.test(story.subject)) {
+              var status = config.getStatusById(story.status.id),
+                  priority = config.getPriorityById(story.priority.id);
 
-            story.status = (angular.isDefined(status)) ? status.name : undefined;
-            story.priority = (angular.isDefined(priority)) ? priority.name : undefined;
-            story.url = config.scheme + '://' + config.host + '/issues/' + story.id;
+              story.status = (angular.isDefined(status)) ? status.name : undefined;
+              story.priority = (angular.isDefined(priority)) ? priority.name : undefined;
+              story.url = config.scheme + '://' + config.host + '/issues/' + story.id;
+
+              stories.push(story)
+            }
           });
 
-          return stories;
+          return $filter('orderBy')(stories, config.stories.sort);
         }
       },
       get: {

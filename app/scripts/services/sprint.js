@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kamine.app')
-  .factory('Sprint', function ($resource, config) {
+  .factory('Sprint', function ($resource, $filter, config) {
     return $resource('/api/issues/:id.json', config.getParams(), {
       query: {
         method: 'GET',
@@ -13,7 +13,16 @@ angular.module('kamine.app')
           'status_id': '*'
         },
         transformResponse: function (data) {
-          return angular.fromJson(data).issues;
+          var sprints = [],
+              regex = new RegExp(config.sprints.title);
+
+          angular.forEach(angular.fromJson(data).issues, function (sprint) {
+            if (regex.test(sprint.subject)) {
+              sprints.push(sprint);
+            }
+          });
+
+          return $filter('orderBy')(sprints, config.sprints.sort);
         }
       }
     });

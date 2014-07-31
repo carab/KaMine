@@ -13,7 +13,7 @@ angular.module('kamine.app')
       },
       sprints: {
         tracker: 4, // Feature
-        sort: 'subject',
+        sort: 'id',
         title: 'Sprint #(.+)'
       },
       stories: {
