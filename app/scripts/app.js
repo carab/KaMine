@@ -10,7 +10,8 @@ angular.module('kamine.app', [
   'LocalStorageModule', // To save config on user machine
   'ui.bootstrap',
   'ui.router',
-  'wu.masonry'
+  'wu.masonry',
+  'googlechart'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');

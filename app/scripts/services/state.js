@@ -3,17 +3,19 @@
 'use strict';
 
 angular.module('kamine.app')
-  .service('state', function ($q, $rootScope, config, User, Project, Story, Sprint, Status, Priority, Tracker, Message) {
+  .service('state', function ($q, $rootScope, config, User, Project, Story, Sprint, Entry, Status, Priority, Tracker, Message) {
     var state = this;
 
     state.user;
     state.project;
     state.sprint;
     state.story;
+    state.entry;
 
     state.projects;
     state.sprints;
     state.stories;
+    state.entries;
 
     state.statutes;
     state.priorities;
@@ -24,10 +26,12 @@ angular.module('kamine.app')
       project: $q.when(),
       sprint: $q.when(),
       story: $q.when(),
+      entry: $q.when(),
 
       projects: $q.when(),
       sprints: $q.when(),
       stories: $q.when(),
+      entries: $q.when(),
 
       statutes: $q.when(),
       priorities: $q.when(),
@@ -111,6 +115,28 @@ angular.module('kamine.app')
       });
 
       return state.promises.stories;
+    };
+
+    state.loadEntries = function () {
+      var deferred = $q.defer();
+      state.promises.entries = deferred.promise;
+
+      state.promises.sprint.then(function (d) {
+        state.entries = Entry.query({
+          'issue_id': state.sprint.id,
+          'limit': 100
+        });
+
+        state.entries.$promise.then(function (d) {
+          deferred.resolve(d);
+        }, function (d) {
+          deferred.reject(d);
+        });
+      }, function (d) {
+          deferred.reject(d);
+      });
+
+      return state.promises.entries;
     };
 
     state.loadStatutes = function () {
@@ -266,6 +292,7 @@ angular.module('kamine.app')
       if (angular.isDefined(currentSprint)) {
         state.setSprint(currentSprint);
         state.loadStories();
+        state.loadEntries();
       }
     };
 
@@ -291,6 +318,7 @@ angular.module('kamine.app')
 
         state.setSprint(new Sprint({ id: toParams.sprint }));
         state.loadStories();
+        state.loadEntries();
       }
     });
   });

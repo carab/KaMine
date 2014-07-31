@@ -1,4 +1,32 @@
 
 <div class="chart">
-    Burndown Chart
+    <h1 translate>chart.title</h1>
+    <div class="chart-parameters">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <label for="chart-max-days" translate>chart.maxDays</label>
+                <input type="number" class="form-control" ng-model="maxDays" id="chart-max-days" ng-change="process()" />
+            </div>
+        </form>
+    </div>
+    <div google-chart chart="chartObject" style="{{cssStyle}}"></div>
+    <h1 translate>chart.entries</h1>
+    <table class="chart-table table table-bordered">
+        <tr>
+            <th translate>chart.date</th>
+            <th translate>chart.story</th>
+            <th translate>chart.spent</th>
+            <th translate>chart.remaining</th>
+            <th translate>chart.user</th>
+            <th translate>chart.comment</th>
+        </tr>
+        <tr ng-repeat="entry in state.entries">
+            <td>{{entry.spent_on}}</td>
+            <td>{{entry.issue.id}}</td>
+            <td>{{entry.hours}}</td>
+            <td>{{entry.remaining_hours}}</td>
+            <td>{{entry.user.name}}</td>
+            <td>{{entry.comments}}</td>
+        </tr>
+    </table>
 </div>

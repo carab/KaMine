@@ -16,6 +16,7 @@
         "help": "Veuillez mettre à jour votre configuration"
     },
     "board": {
+        "title": "Tableau de bord",
         "todo": "À faire",
         "inprogress": "En cours",
         "totest": "À tester",
@@ -24,6 +25,22 @@
         "filter": {
             "user": "-- Sélectionner un utilisateur --"
         }
+    },
+    "chart": {
+        "title": "Graphique burndown",
+        "entries": "Temps passé",
+        "maxDays": "Nombre de jours",
+        "day": "Jour",
+        "hours": "Heures",
+        "days": "Jours",
+        "theoricRemaining": "Idéal restant",
+        "realRemaining": "Effort restant",
+        "date": "Date",
+        "story": "Story",
+        "spent": "Temps passé (heures)",
+        "remaining": "Temps restant (heures)",
+        "user": "Utilisateur",
+        "comment": "Commentaire"
     },
     "config": {
         "save": "Sauvegarder",

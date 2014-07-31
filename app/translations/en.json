@@ -16,6 +16,7 @@
         "help": "Please update your configuration"
     },
     "board": {
+        "title": "Board",
         "todo": "To do",
         "inprogress": "In progress",
         "totest": "To test",
@@ -24,6 +25,22 @@
         "filter": {
             "user": "-- Select a user --"
         }
+    },
+    "chart": {
+        "title": "Burndown chart",
+        "entries": "Spent time",
+        "maxDays": "Max days",
+        "day": "Day",
+        "hours": "Hours",
+        "days": "Days",
+        "theoricRemaining": "Ideal remaining",
+        "realRemaining": "Effort remaining",
+        "date": "Date",
+        "story": "Story",
+        "spent": "Spent time (hours)",
+        "remaining": "Remaining time (hours)",
+        "user": "User",
+        "comment": "Comment"
     },
     "config": {
         "save": "Save",
