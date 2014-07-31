@@ -9,7 +9,7 @@ angular.module('kamine.app')
       key: '',
       limit: 400,
       projects: {
-        sort: 'id'
+        sort: 'name'
       },
       sprints: {
         tracker: 4, // Feature
