@@ -54,7 +54,9 @@ angular.module('kamine.app')
       state.promises.projects = d.promise;
 
       state.promises.user.then(function (data) {
-        state.projects = Project.query();
+        state.projects = Project.query({
+          "limit": 100
+        });
 
         state.projects.$promise.then(function (data) {
           d.resolve(data);
@@ -242,6 +244,9 @@ angular.module('kamine.app')
         return;
       }
 
+      var currentProject = state.project,
+          currentSprint = state.sprint;
+
       state.project = {};
       state.sprint = {};
       state.story = {};
@@ -252,9 +257,19 @@ angular.module('kamine.app')
 
       state.loadUser();
       state.loadProjects();
+
+      if (angular.isDefined(currentProject)) {
+        state.setProject(currentProject);
+        state.loadSprints();
+      }
+
+      if (angular.isDefined(currentSprint)) {
+        state.setSprint(currentSprint);
+        state.loadStories();
+      }
     };
 
-    // Update the selected project and sprint when the state changes
+    // Update the selected project and sprint when the state changes and on page load
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
       if (toParams.project != fromParams.project) {
         state.project = {};

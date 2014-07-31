@@ -9,7 +9,7 @@
         "switchProject": "Switch project",
         "goSprint": "Go to sprint",
         "switchSprint": "Switch sprint",
-        "refreshStories": "Refresh stories",
+        "reload": "Reload everything",
         "configuration": "Configuration",
         "switchLanguage": "Switch language",
         "welcome": "Welcome {{firstname}}!",
@@ -76,8 +76,8 @@
     },
     "message": {
         "missingKey": "The API key is missing, please check your configuration.",
-        "unableToFindUser": "Unable to fetch user, please check your configuration",
-        "statusUpdateFail": "Failed to update the status, check your statutes configuration"
+        "unableToFindUser": "Unable to fetch user, please check your configuration.",
+        "statusUpdateFail": "The server refused the status update, please check your configuration."
     },
     "help": {
         "selectProject": "Please select a project.",

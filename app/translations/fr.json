@@ -9,7 +9,7 @@
         "switchProject": "Changer de projet",
         "goSprint": "Ouvrir le sprint",
         "switchSprint": "Changer de sprint",
-        "refreshStories": "Actualiser les stories",
+        "reload": "Tout rafraîchir",
         "configuration": "Configuration",
         "switchLanguage": "Changer de langage",
         "welcome": "Bienvenue {{firstname}} !",
@@ -76,8 +76,8 @@
     },
     "message": {
         "missingKey": "La clé API est manquante, merci de vérifier votre configuration.",
-        "unableToFindUser": "Impossible de récupérer votre compte, merci de vérifier votre configuration",
-        "statusUpdateFail": "Impossible de modifier le statut, veuillez vérifier la configuration de vos statuts."
+        "unableToFindUser": "Impossible de récupérer votre compte, merci de vérifier votre configuration.",
+        "statusUpdateFail": "Le serveur a refusé la modification du statut, merci de vérifier votre configuration."
     },
     "help": {
         "selectProject": "Sélectionnez un projet.",
