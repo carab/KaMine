@@ -27,7 +27,9 @@ angular.module('kamine.app')
           $scope.realRemainingPerDay[index + 1] += entry.remaining_hours;
         });
 
-        $scope.maxDays = dates.length;
+        if (angular.isUndefined($scope.maxDays)) {
+          $scope.maxDays = dates.length;
+        }
 
         var theoricRemaining = state.sprint.estimated_hours,
             theoricHoursByDay = state.sprint.estimated_hours / $scope.maxDays;
