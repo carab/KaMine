@@ -4,8 +4,9 @@
         <button type="button" class="close" ng-click="Message.remove(message.key)">
             &times;
         </button>
-        <span class="alert-message">
+        <div class="alert-message">
             {{message.text | translate:message.values }}
-        </span>
+            <ng-include src="'partials/' + message.template"></ng-include>
+        </div>
     </div>
 </div>

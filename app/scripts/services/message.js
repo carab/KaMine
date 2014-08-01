@@ -40,11 +40,16 @@ angular.module('kamine.app')
       }
 
       this.messages[key] = {
-        text: text,
         values: values,
         type: type,
         key: key
       };
+
+      if (angular.isObject(text)) {
+        this.messages[key].template = text.template;
+      } else {
+        this.messages[key].text = text;
+      }
 
       if (angular.isDefined(delay)) {
         var that = this;

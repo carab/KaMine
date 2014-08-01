@@ -2,13 +2,7 @@
 .board {
     .board-table {
         table-layout: fixed;
-    }
 
-    .board-filters {
-        margin: 1em 0;
-    }
-
-    .table {
         > thead  {
             > tr {
                 > th {
@@ -30,20 +24,35 @@
         }
     }
 
+    .board-toolbar {
+        margin: 1em 0;
+    }
+
     .story {
         width: 50%;
+        position: relative;
     }
 
     .story-inner {
         padding: 4px;
     }
 
-    .story-assigned-to {
+    .story-assigned-to,
+    .story-middle {
         display: none;
     }
 
-    .story-middle {
-        display: none;
+    .board-table.is-details-shown {
+        .story-assigned-to,
+        .story-middle {
+            display: block;
+        }
+    }
+
+    .story-icons {
+        position: absolute;
+        right: 10px;
+        top: 8px;
     }
 
     .well {

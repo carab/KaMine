@@ -22,8 +22,14 @@
         "totest": "To test",
         "testing": "Testing",
         "done": "Done",
-        "filter": {
-            "user": "-- Select a user --"
+        "toolbar": {
+            "user": "-- Select a user --",
+            "showDetails": "Afficher les détails"
+        },
+        "tooltips": {
+            "excess": "Too much time are spent on this !",
+            "testko" :"The tests have failed :(",
+            "done": "This story is finished !"
         }
     },
     "chart": {
@@ -94,7 +100,9 @@
     "message": {
         "missingKey": "The API key is missing, please check your configuration.",
         "unableToFindUser": "Unable to fetch user, please check your configuration.",
-        "statusUpdateFail": "The server refused the status update, please check your configuration."
+        "statusUpdateFail": "The server refused the status update, please check your configuration.",
+        "statusUpdateSuccess": "Status effectively updated.",
+        "addTime": "Add time"
     },
     "help": {
         "selectProject": "Please select a project.",

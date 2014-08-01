@@ -6,6 +6,10 @@ angular.module('kamine.app')
     $scope.state = state;
     $scope.filters = {};
 
+    $scope.resetLayout = function () {
+      $rootScope.$broadcast('masonry.reload');
+    };
+
     // On drag and drop story, save its new status
     $rootScope.$on('dropEvent', function(event, story, column) {
 
@@ -40,10 +44,15 @@ angular.module('kamine.app')
       // Save it and get it again to check if the status has been updated
       story.$save(function () {
         story.$get(function () {
-          if (story.status != newStatus.name) {
+          if (story.status == newStatus.name) {
+            Message.addDanger({
+              template: 'board-status-update-success.html'
+            });
+          } else {
             Message.addDanger('message.statusUpdateFail');
           }
         });
       });
     });
+
   });

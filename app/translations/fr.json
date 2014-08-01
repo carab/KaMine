@@ -22,8 +22,14 @@
         "totest": "À tester",
         "testing": "En test",
         "done": "Fait",
-        "filter": {
-            "user": "-- Sélectionner un utilisateur --"
+        "toolbar": {
+            "user": "-- Sélectionner un utilisateur --",
+            "showDetails": "Afficher les détails"
+        },
+        "tooltips": {
+            "excess": "Le temps passé a dépassé le temps estimé.",
+            "testko" :"Les tests ont échoué :(",
+            "done": "Cette story est terminée !"
         }
     },
     "chart": {
@@ -71,7 +77,7 @@
         "low": "Bas",
         "normal": "Normal",
         "high": "Elevé",
-        "immediate": "Immediat",
+        "immediate": "Immédiat",
         "switchMode": "Changer de mode",
         "jsonHelp": "Copiez/collez si vous avez besoin d'exporter ou d'importer",
         "fields": {
@@ -94,7 +100,9 @@
     "message": {
         "missingKey": "La clé API est manquante, merci de vérifier votre configuration.",
         "unableToFindUser": "Impossible de récupérer votre compte, merci de vérifier votre configuration.",
-        "statusUpdateFail": "Le serveur a refusé la modification du statut, merci de vérifier votre configuration."
+        "statusUpdateFail": "Le serveur a refusé la modification du statut, merci de vérifier votre configuration.",
+        "statusUpdateSuccess": "Statut correctement mis à jour.",
+        "addTime": "Insérer du temps"
     },
     "help": {
         "selectProject": "Sélectionnez un projet.",

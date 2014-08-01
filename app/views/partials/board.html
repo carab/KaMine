@@ -1,10 +1,16 @@
 
 <div class="board">
     <h1 translate>board.title</h1>
-    <div class="board-filters">
+    <div class="board-toolbar">
         <form class="form-inline" role="form">
             <div class="form-group">
-                <select class="form-control filter is-user"
+                <label>
+                    <input type="checkbox" ng-model="showDetails" ng-change="resetLayout()" />
+                    {{ 'board.toolbar.showDetails' | translate }}
+                </label>
+            </div>
+            <div class="form-group filter is-user">
+                <select class="form-control"
                     multiple
                     ng-model="filters.assigned_to.id"
                     ng-options="user.id as user.name for user in (state.stories | userList)">
@@ -12,7 +18,7 @@
             </div>
         </form>
     </div>
-    <table class="board-table table table-bordered">
+    <table class="board-table table table-bordered" ng-class="{'is-details-shown': showDetails}">
         <thead>
             <tr>
                 <th 
@@ -37,6 +43,11 @@
                             <div class="story-inner">
                                 <div class="well">
                                     <div class="story-top">
+                                        <div class="story-icons">
+                                            <i class="fa fa-warning fa-lg text-danger" ng-show="story.spent_hours > story.estimated_hours" tooltip="{{'board.tooltips.excess' | translate}}"></i>
+                                            <i class="fa fa-thumbs-down fa-lg text-danger" ng-show="story | hasStatus:'testko'" tooltip="{{'board.tooltips.testko' | translate}}"></i>
+                                            <i class="fa fa-thumbs-up fa-lg text-success" ng-show="story.status == 'done'" tooltip="{{'board.tooltips.done' | translate}}"></i>
+                                        </div>
                                         <div class="story-url">
                                             <a ng-href="{{story.url}}">#<span class="story-id">{{story.id}}</span></a>
                                         </div>
@@ -44,14 +55,10 @@
                                     </div>
 
                                     <div class="story-middle">
-                                        <span class="story-priority">{{story.priority.name}}</span> - <span class="story-estimated-hours">{{story.estimated_hours}}</span>h
+                                        <span class="story-priority" translate>config.{{story.priority}}</span> - <span class="story-estimated-hours">{{story.estimated_hours}}</span>h
                                     </div>
 
                                     <div class="story-bottom clearfix">
-                                        <div class="story-icon">
-                                            <i class="fa fa-warning fa-lg text-danger" ng-show="story.spent_time > story.estimated_hours"></i>
-                                            <i class="fa fa-thumbs-down fa-lg text-danger" ng-show="story | hasStatus:'testko'"></i>
-                                        </div>
                                         <div class="story-assigned-to" ng-bind="story.assigned_to.name"></div>
                                     </div>
                                 </div>

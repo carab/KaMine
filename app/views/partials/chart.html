@@ -4,8 +4,10 @@
     <div class="chart-parameters">
         <form class="form-inline" role="form">
             <div class="form-group">
-                <label for="chart-max-days" translate>chart.maxDays</label>
-                <input type="number" class="form-control" ng-model="maxDays" id="chart-max-days" ng-change="process()" />
+                <label>
+                    {{'chart.maxDays' | translate}}
+                    <input type="number" class="form-control" ng-model="maxDays" id="chart-max-days" ng-change="process()" />
+                </label>
             </div>
         </form>
     </div>
