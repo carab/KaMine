@@ -59,13 +59,13 @@ Features
 * Advanced configuration.
 * English and French translations.
 * Board view.
-** Filter on user.
-** Simple/detailed display.
-** Status change by drag & drop.
-** Info icons
+  * Filter on user.
+  * Simple/detailed display.
+  * Status change by drag & drop.
+  * Info icons
 * Burndown chart view.
-** Chart with ideal and effort remaining time.
-** Spent time list.
+  * Chart with ideal and effort remaining time.
+  * Spent time list.
 
 In progress
 -----------
@@ -84,7 +84,7 @@ To do
 * Manage the sprint backlog.
 * Add a button to edit story.
 * Enhance the API proxy to transfer headers.
-* Provide a backend-free solution.
+* Provide a backend-free version.
 * Provide a node-webkit version for desktop.
 
 ## Why is there a backend ?
@@ -95,4 +95,4 @@ As I explained, Redmine doesn't really fit with [CORS](http://www.w3.org/TR/cors
 
 My wish is to provide a solution without the need of the administration access. Therefore, the backend is here to provide a way to proxy the requests sent by the frontend.
 
-It currently only works as this, but my goal is also to provide a frontend-only web app, as it will allows to use the app without any dependency (only *.html main file and that's all).
+It currently only works as this, but my goal is also to provide a frontend-only web app, as it will allows to use the app without any dependency (only *.html main file and that's all). If this is not possible, I'll try to build a node-webkit version for desktops.
