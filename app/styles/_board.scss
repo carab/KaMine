@@ -1,4 +1,6 @@
 
+@import "compass/css3/box-shadow";
+
 .board {
     .board-table {
         table-layout: fixed;
@@ -31,31 +33,61 @@
     .story {
         width: 50%;
         position: relative;
+
+        &:hover {
+            .well {
+                @include box-shadow(0 0 6px 0px #CCC);
+
+                z-index: 1000;
+                border-color: #CCC;
+            }
+
+            .story-bottom,
+            .story-middle {
+                display: block;
+            }
+        }
     }
 
     .story-inner {
         padding: 4px;
     }
 
-    .story-assigned-to,
+    .story-middle {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    .story-bottom {
+        font-style: italic;
+        font-size: 0.8em;
+    }
+
+    .story-bottom,
     .story-middle {
         display: none;
     }
 
     .board-table.is-details-shown {
-        .story-assigned-to,
+        .story-bottom,
         .story-middle {
             display: block;
         }
     }
 
+    .story-id {
+        font-weight: bold;
+    }
+
     .story-icons {
         position: absolute;
-        right: 10px;
-        top: 8px;
+        right: 6px;
+        top: 4px;
     }
 
     .well {
+        position: relative;
         padding: 3px;
         margin: 0;
     }

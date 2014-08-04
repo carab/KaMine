@@ -30,7 +30,10 @@
             "excess": "Too much time is spent on this !",
             "testko" :"The tests have failed :(",
             "done": "This story is finished !",
-            "story": "Go to story"
+            "story": "Go to story",
+            "estimated": "Estimated time",
+            "spent": "Spent time",
+            "remaining": "Remaining time"
         }
     },
     "chart": {

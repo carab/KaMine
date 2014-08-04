@@ -30,7 +30,10 @@
             "excess": "Le temps passé a dépassé le temps estimé.",
             "testko" :"Les tests ont échoué :(",
             "done": "Cette story est terminée !",
-            "story": "Ouvrir la story"
+            "story": "Ouvrir la story",
+            "estimated": "Temps estimé",
+            "spent": "Temps passé",
+            "remaining": "Temps restant"
         }
     },
     "chart": {
