@@ -27,7 +27,7 @@
             "showDetails": "Afficher les détails"
         },
         "tooltips": {
-            "excess": "Too much time are spent on this !",
+            "excess": "Too much time is spent on this !",
             "testko" :"The tests have failed :(",
             "done": "This story is finished !"
         }
