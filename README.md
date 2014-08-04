@@ -52,26 +52,40 @@ If you wish to use it :
 1. Install Yeoman globally : `npm install -g yo`
 2. Install Angular-Fullstack generator : `npm install -g generator-angular-fullstack`
 
-To do
------
+Features
+--------
 
-* Form to add spent time and comment when the story status is changed.
-* Stories with background color for each users.
-* Buttons to create sprints and stories.
-* Manage the product backlog.
-* Manage the sprint backlog.
-* Button to change assignee.
-* Enhance the API proxy to transfer headers.
-* Without backend solution.
-* Switch mode in board view to have more info on stories.
-* Why not a Node-Webkit version ?
+* Project and sprint management.
+* Advanced configuration.
+* English and French translations.
+* Board view.
+** Filter on user.
+** Simple/detailed display.
+** Status change by drag & drop.
+** Info icons
+* Burndown chart view.
+** Chart with ideal and effort remaining time.
+** Spent time list.
 
 In progress
 -----------
 
-* Multiple profiles for configuration.
-* Burndown chart view.
-* Filters on board view.
+* Allow for multiple configuration profiles.
+* Add more filters on board view.
+* Show a form to add spent time and comment when status is changed.
+
+To do
+-----
+
+* Add auto-refresh when focus on page and on a timer.
+* Set background color on stories for each users.
+* Add a way to create sprints and stories.
+* Manage the product backlog.
+* Manage the sprint backlog.
+* Add a button to edit story.
+* Enhance the API proxy to transfer headers.
+* Provide a backend-free solution.
+* Provide a node-webkit version for desktop.
 
 ## Why is there a backend ?
 
