@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kamine.app')
-  .controller('ConfigCtrl', function ($scope, $modalInstance, localStorageService, config, state, Project) {
+  .controller('ConfigCtrl', function ($scope, $modalInstance, localStorageService, config, state) {
     $scope.config = angular.copy(config);
     $scope.json = {
       value: angular.toJson($scope.config),

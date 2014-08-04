@@ -13,48 +13,48 @@ angular.module('kamine.app', [
   'wu.masonry',
   'googlechart'
 ])
-.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/');
+  .config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
 
-  $stateProvider
-    .state('board', {
-      url: '/board/:project/:sprint',
-      templateUrl: 'partials/board.html',
-      controller: 'BoardCtrl'
-    })
-    .state('chart', {
-      url: '/chart/:project/:sprint',
-      templateUrl: 'partials/chart.html',
-      controller: 'ChartCtrl'
-    })
-    .state('selectproject', {
-      url: '/',
-      templateUrl: 'partials/help.html',
-      controller: 'HelpCtrl'
-    })
-    .state('selectsprint', {
-      url: '/:project',
-      templateUrl: 'partials/help.html',
-      controller: 'HelpCtrl'
-    })
-    .state('selectview', {
-      url: '/:project/:sprint',
-      templateUrl: 'partials/help.html',
-      controller: 'HelpCtrl'
-    });
-    /*/.config(function ($routeProvider) {
-    $routeProvider
-      .when('/board/:project?/:sprint?', {
+    $stateProvider
+      .state('board', {
+        url: '/board/:project/:sprint',
         templateUrl: 'partials/board.html',
         controller: 'BoardCtrl'
       })
-      .when('/chart/:project?/:sprint?', {
+      .state('chart', {
+        url: '/chart/:project/:sprint',
         templateUrl: 'partials/chart.html',
         controller: 'ChartCtrl'
       })
-      .otherwise({
-        redirectTo: '/board'
-      });/**/
+      .state('selectproject', {
+        url: '/',
+        templateUrl: 'partials/help.html',
+        controller: 'HelpCtrl'
+      })
+      .state('selectsprint', {
+        url: '/:project',
+        templateUrl: 'partials/help.html',
+        controller: 'HelpCtrl'
+      })
+      .state('selectview', {
+        url: '/:project/:sprint',
+        templateUrl: 'partials/help.html',
+        controller: 'HelpCtrl'
+      });
+      /*/.config(function ($routeProvider) {
+      $routeProvider
+        .when('/board/:project?/:sprint?', {
+          templateUrl: 'partials/board.html',
+          controller: 'BoardCtrl'
+        })
+        .when('/chart/:project?/:sprint?', {
+          templateUrl: 'partials/chart.html',
+          controller: 'ChartCtrl'
+        })
+        .otherwise({
+          redirectTo: '/board'
+        });/**/
   })
   .config(function ($translateProvider) {
     $translateProvider

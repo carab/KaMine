@@ -25,7 +25,7 @@ angular.module('kamine.app')
               story.priority = (angular.isDefined(priority)) ? priority.name : undefined;
               story.url = config.scheme + '://' + config.host + '/issues/' + story.id;
 
-              stories.push(story)
+              stories.push(story);
             }
           });
 

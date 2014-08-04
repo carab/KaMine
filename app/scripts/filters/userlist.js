@@ -8,7 +8,7 @@ angular.module('kamine.app')
 
       angular.forEach(stories, function (story) {
         if (
-          angular.isDefined(story.assigned_to) && 
+          angular.isDefined(story.assigned_to) &&
           ids.indexOf(story.assigned_to.id) === -1
         ) {
           users.push(story.assigned_to);

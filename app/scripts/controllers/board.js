@@ -44,7 +44,7 @@ angular.module('kamine.app')
       // Save it and get it again to check if the status has been updated
       story.$save(function () {
         story.$get(function () {
-          if (story.status == newStatus.name) {
+          if (story.status === newStatus.name) {
             Message.addSuccess({
               template: 'partials/log-time-message.html',
               addTime: function () {

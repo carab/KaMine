@@ -6,20 +6,20 @@ angular.module('kamine.app')
   .service('state', function ($q, $rootScope, config, User, Project, Story, Sprint, Entry, Status, Priority, Tracker, Message) {
     var state = this;
 
-    state.user;
-    state.project;
-    state.sprint;
-    state.story;
-    state.entry;
+    state.user = {};
+    state.project = {};
+    state.sprint = {};
+    state.story = {};
+    state.entry = {};
 
-    state.projects;
-    state.sprints;
-    state.stories;
-    state.entries;
+    state.projects = [];
+    state.sprints = [];
+    state.stories = [];
+    state.entries = [];
 
-    state.statutes;
-    state.priorities;
-    state.trackers;
+    state.statutes = [];
+    state.priorities = [];
+    state.trackers = [];
 
     state.promises = {
       user: $q.when(),
@@ -38,7 +38,7 @@ angular.module('kamine.app')
       trackers: $q.when()
     };
 
-    state.loadUser = function (user) {
+    state.loadUser = function () {
       var deferred = $q.defer();
       state.promises.user = deferred.promise;
 
@@ -54,21 +54,21 @@ angular.module('kamine.app')
     };
 
     state.loadProjects = function () {
-      var d = $q.defer();
-      state.promises.projects = d.promise;
+      var deferred = $q.defer();
+      state.promises.projects = deferred.promise;
 
-      state.promises.user.then(function (data) {
+      state.promises.user.then(function (d) {
         state.projects = Project.query({
           'limit': config.limit
         });
 
-        state.projects.$promise.then(function (data) {
-          d.resolve(data);
-        }, function (data) {
-          d.reject(data);
+        state.projects.$promise.then(function (d) {
+          deferred.resolve(d);
+        }, function (d) {
+          deferred.reject(d);
         });
-      }, function (data) {
-          d.reject(data);
+      }, function (d) {
+        deferred.reject(d);
       });
 
       return state.promises.projects;
@@ -90,7 +90,7 @@ angular.module('kamine.app')
           deferred.reject(d);
         });
       }, function (d) {
-          deferred.reject(d);
+        deferred.reject(d);
       });
 
       return state.promises.sprints;
@@ -113,7 +113,7 @@ angular.module('kamine.app')
           deferred.reject(d);
         });
       }, function (d) {
-          deferred.reject(d);
+        deferred.reject(d);
       });
 
       return state.promises.stories;
@@ -135,7 +135,7 @@ angular.module('kamine.app')
           deferred.reject(d);
         });
       }, function (d) {
-          deferred.reject(d);
+        deferred.reject(d);
       });
 
       return state.promises.entries;
@@ -196,7 +196,7 @@ angular.module('kamine.app')
           deferred.reject('project_not_found');
         }
       }, function (d) {
-          deferred.reject(d);
+        deferred.reject(d);
       });
 
       return state.promises.project;
@@ -216,7 +216,7 @@ angular.module('kamine.app')
           deferred.reject('sprint_not_found');
         }
       }, function (d) {
-          deferred.reject(d);
+        deferred.reject(d);
       });
 
       return state.promises.sprint;
@@ -236,7 +236,7 @@ angular.module('kamine.app')
           deferred.reject('story_not_found');
         }
       }, function (d) {
-          deferred.reject(d);
+        deferred.reject(d);
       });
 
       return state.promises.story;
@@ -244,7 +244,7 @@ angular.module('kamine.app')
 
     state.findProject = function (id) {
       for (var index in state.projects) {
-        if (state.projects[index].id == id) {
+        if (state.projects[index].id === id) {
           return state.projects[index];
         }
       }
@@ -252,7 +252,7 @@ angular.module('kamine.app')
 
     state.findSprint = function (id) {
       for (var index in state.sprints) {
-        if (state.sprints[index].id == id) {
+        if (state.sprints[index].id === id) {
           return state.sprints[index];
         }
       }
@@ -260,7 +260,7 @@ angular.module('kamine.app')
 
     state.findStory = function (id) {
       for (var index in state.stories) {
-        if (state.stories[index].id == id) {
+        if (state.stories[index].id === id) {
           return state.stories[index];
         }
       }
@@ -300,7 +300,7 @@ angular.module('kamine.app')
 
     // Update the selected project and sprint when the state changes and on page load
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-      if (toParams.project != fromParams.project) {
+      if (toParams.project !== fromParams.project) {
         state.project = {};
         state.sprint = {};
         state.story = {};

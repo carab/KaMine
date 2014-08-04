@@ -55,18 +55,18 @@ angular.module('kamine.app')
         var data = [];
         angular.forEach($scope.days, function (day, index) {
           var row = {
-            'c': [
+            c: [
               {
-                'v': day
+                v: day
               },
               {
-                'v': $scope.theoricRemainingPerDay[index]
+                v: $scope.theoricRemainingPerDay[index]
               }
             ]
           };
 
           if (angular.isDefined($scope.realRemainingPerDay[index])) {
-            row['c'].push({ 'v': $scope.realRemainingPerDay[index] });
+            row.c.push({ v: $scope.realRemainingPerDay[index] });
           }
 
           data.push(row);
@@ -117,7 +117,7 @@ angular.module('kamine.app')
     });
 
     // Reload the chart when the language is changed
-    $rootScope.$on('$translateChangeEnd', function(event) {
+    $rootScope.$on('$translateChangeEnd', function() {
       $scope.process();
     });
   });
