@@ -6,7 +6,7 @@ angular.module('kamine.app')
       var filteredStories = [];
       
       angular.forEach(stories, function (story) {
-        if ($filter('hasStatus')(story, statutes)) {
+        if ($filter('hasStatus')(story, filters)) {
           filteredStories.push(story);
         }
       });

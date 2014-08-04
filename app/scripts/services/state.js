@@ -57,7 +57,7 @@ angular.module('kamine.app')
       var deferred = $q.defer();
       state.promises.projects = deferred.promise;
 
-      state.promises.user.then(function (d) {
+      state.promises.user.then(function () {
         state.projects = Project.query({
           'limit': config.limit
         });
@@ -78,7 +78,7 @@ angular.module('kamine.app')
       var deferred = $q.defer();
       state.promises.sprints = deferred.promise;
 
-      state.promises.project.then(function (d) {
+      state.promises.project.then(function () {
         state.sprints = Sprint.query({
           'project_id': state.project.id,
           'limit': config.limit
@@ -100,7 +100,7 @@ angular.module('kamine.app')
       var deferred = $q.defer();
       state.promises.stories = deferred.promise;
 
-      state.promises.sprint.then(function (d) {
+      state.promises.sprint.then(function () {
         state.stories = Story.query({
           'project_id': state.project.id,
           'parent_id': state.sprint.id,
@@ -123,7 +123,7 @@ angular.module('kamine.app')
       var deferred = $q.defer();
       state.promises.entries = deferred.promise;
 
-      state.promises.sprint.then(function (d) {
+      state.promises.sprint.then(function () {
         state.entries = Entry.query({
           'issue_id': state.sprint.id,
           'limit': config.limit
