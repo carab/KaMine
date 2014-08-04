@@ -29,7 +29,8 @@
         "tooltips": {
             "excess": "Too much time is spent on this !",
             "testko" :"The tests have failed :(",
-            "done": "This story is finished !"
+            "done": "This story is finished !",
+            "story": "Go to story"
         }
     },
     "chart": {
@@ -100,9 +101,11 @@
     "message": {
         "missingKey": "The API key is missing, please check your configuration.",
         "unableToFindUser": "Unable to fetch user, please check your configuration.",
-        "statusUpdateFail": "The server refused the status update, please check your configuration.",
-        "statusUpdateSuccess": "Status effectively updated.",
-        "addTime": "Add time"
+        "storyUpdateError": "Unable to update story, please check your configuration.",
+        "storyUpdateSuccess": "Story updated.",
+        "logTime": "Log time",
+        "logTimeSuccess": "Time added.",
+        "logTimeError": "Unable to add time, please check your configuration."
     },
     "help": {
         "selectProject": "Please select a project.",
@@ -111,5 +114,13 @@
     },
     "multiselect": {
         "none": "No selection"
+    },
+    "logTime": {
+        "logTime": "Log time",
+        "spent": "Spent time",
+        "comment": "Comment",
+        "save": "Save",
+        "cancel": "Cancel",
+        "hours": "hours"
     }
 }

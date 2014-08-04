@@ -49,7 +49,7 @@
                                             <i class="fa fa-thumbs-up fa-lg text-success" ng-show="story.status == 'done'" tooltip="{{'board.tooltips.done' | translate}}"></i>
                                         </div>
                                         <div class="story-url">
-                                            <a ng-href="{{story.url}}">#<span class="story-id">{{story.id}}</span></a>
+                                            <a ng-href="{{story.url}}" tooltip="{{'board.tooltips.story' | translate}}">#<span class="story-id">{{story.id}}</span></a>
                                         </div>
                                         <div class="story-subject">{{story.subject}}</div>
                                     </div>

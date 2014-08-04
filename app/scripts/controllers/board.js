@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kamine.app')
-  .controller('BoardCtrl', function ($rootScope, $scope, board, state, config, Message) {
+  .controller('BoardCtrl', function ($rootScope, $scope, $modal, board, state, config, Message) {
     $scope.columns = board.columns;
     $scope.state = state;
     $scope.filters = {};
@@ -45,11 +45,19 @@ angular.module('kamine.app')
       story.$save(function () {
         story.$get(function () {
           if (story.status == newStatus.name) {
-            Message.addDanger({
-              template: 'board-status-update-success.html'
+            Message.addSuccess({
+              template: 'partials/log-time-message.html',
+              addTime: function () {
+                state.setStory(story);
+
+                $modal.open({
+                  templateUrl: 'partials/log-time.html',
+                  controller: 'LogTimeCtrl'
+                });
+              }
             });
           } else {
-            Message.addDanger('message.statusUpdateFail');
+            Message.addDanger('message.storyUpdateError');
           }
         });
       });

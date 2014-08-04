@@ -39,20 +39,27 @@ angular.module('kamine.app')
         key = 0;
       }
 
-      this.messages[key] = {
-        values: values,
-        type: type,
-        key: key
-      };
-
+      // Check if text is an object with other needed keys (as 'template', or whatever)
       if (angular.isObject(text)) {
-        this.messages[key].template = text.template;
+        this.messages[key] = text;
+
+        if (angular.isUndefined(this.messages[key].text)) {
+          this.messages[key].text = '';
+        }
       } else {
-        this.messages[key].text = text;
+        this.messages[key] = {
+          text: text,
+        };
       }
 
+      this.messages[key].values = values;
+      this.messages[key].type = type;
+      this.messages[key].key = key;
+
+      // Remove the message after the defined delay
       if (angular.isDefined(delay)) {
         var that = this;
+
         $timeout(function () {
           that.remove(key);
         }, (delay || 3) * 1000);

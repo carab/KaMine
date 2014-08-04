@@ -29,7 +29,8 @@
         "tooltips": {
             "excess": "Le temps passé a dépassé le temps estimé.",
             "testko" :"Les tests ont échoué :(",
-            "done": "Cette story est terminée !"
+            "done": "Cette story est terminée !",
+            "story": "Ouvrir la story"
         }
     },
     "chart": {
@@ -100,9 +101,11 @@
     "message": {
         "missingKey": "La clé API est manquante, merci de vérifier votre configuration.",
         "unableToFindUser": "Impossible de récupérer votre compte, merci de vérifier votre configuration.",
-        "statusUpdateFail": "Le serveur a refusé la modification du statut, merci de vérifier votre configuration.",
-        "statusUpdateSuccess": "Statut correctement mis à jour.",
-        "addTime": "Insérer du temps"
+        "storyUpdateError": "Impossible de mettre à jour la story, merci de vérifier votre configuration.",
+        "storyUpdateSuccess": "Story mise à jour.",
+        "logTime": "Insérer du temps",
+        "logTimeSuccess": "Temps inséré.",
+        "logTimeError": "Impossible d'insérer le temps, merci de vérifier votre configuration."
     },
     "help": {
         "selectProject": "Sélectionnez un projet.",
@@ -111,5 +114,13 @@
     },
     "multiselect": {
         "none": "Aucune sélection"
+    },
+    "logTime": {
+        "logTime": "Insérer du temps",
+        "spent": "Temps passé",
+        "comment": "Commentaire",
+        "save": "Valider",
+        "cancel": "Annuler",
+        "hours": "heures"
     }
 }

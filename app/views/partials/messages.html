@@ -6,7 +6,7 @@
         </button>
         <div class="alert-message">
             {{message.text | translate:message.values }}
-            <ng-include src="'partials/' + message.template"></ng-include>
+            <ng-include src="message.template"></ng-include>
         </div>
     </div>
 </div>

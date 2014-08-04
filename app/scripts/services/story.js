@@ -51,10 +51,10 @@ angular.module('kamine.app')
         transformRequest: function (story) {
           var data = {
             'issue': {
-                'status_id': config.getStatusByName(story.status).id,
-                'priority_id': config.getPriorityByName(story.priority).id
-              }
-            };
+              'status_id': config.getStatusByName(story.status).id,
+              'priority_id': config.getPriorityByName(story.priority).id
+            }
+          };
 
           return angular.toJson(data);
         }
