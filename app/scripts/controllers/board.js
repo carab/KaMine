@@ -10,6 +10,15 @@ angular.module('kamine.app')
       $rootScope.$broadcast('masonry.reload');
     };
 
+    $scope.logTime = function (story) {
+      state.setStory(story);
+
+      $modal.open({
+        templateUrl: 'partials/log-time.html',
+        controller: 'LogTimeCtrl'
+      });
+    };
+
     // On drag and drop story, save its new status
     $rootScope.$on('dropEvent', function(event, story, column) {
 
@@ -48,14 +57,9 @@ angular.module('kamine.app')
             Message.addSuccess({
               template: 'partials/log-time-message.html',
               addTime: function () {
-                state.setStory(story);
-
-                $modal.open({
-                  templateUrl: 'partials/log-time.html',
-                  controller: 'LogTimeCtrl'
-                });
+                $scope.logTime(story);
               }
-            });
+            }, {}, 5);
           } else {
             Message.addDanger('message.storyUpdateError');
           }

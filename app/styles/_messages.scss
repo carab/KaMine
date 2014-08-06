@@ -3,4 +3,13 @@
     position: absolute;
     right: 3em;
     top: 0;
+
+    .alert {
+        margin-bottom: 10px;
+
+        .alert-message {
+            white-space: nowrap;
+            padding-right: 25px;
+        }
+    }
 }

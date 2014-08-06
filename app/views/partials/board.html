@@ -39,7 +39,7 @@
                 >
 
                     <div masonry="{ transitionDuration: '400ms', gutter: 0, isResizeBound: false, isLayoutInstant: false }">
-                        <div ng-repeat="story in state.stories | filter:filters | withStatus:column.statutes" class="story masonry-brick" drag="story" drag-class="is-dragged">
+                        <div ng-repeat="story in state.stories | filter:filters | withStatus:column.statutes" class="story masonry-brick" drag="story" drag-class="is-dragged" ng-click="logTime(story)">
                             <div class="story-inner">
                                 <div class="well">
                                     <div class="story-top">
