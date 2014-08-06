@@ -62,7 +62,8 @@ Features
   * Filter on user.
   * Simple/detailed display.
   * Status change by drag & drop.
-  * Info icons
+  * Form to add spent time and comment.
+  * Info icons.
 * Burndown chart view.
   * Chart with ideal and effort remaining time.
   * Spent time list.
@@ -71,12 +72,11 @@ In progress
 -----------
 
 * Allow for multiple configuration profiles.
-* Add more filters on board view.
-* Show a form to add spent time and comment when status is changed.
 
 To do
 -----
 
+* Add more filters on board view.
 * Add auto-refresh when focus on page and on a timer.
 * Set background color on stories for each users.
 * Add a way to create sprints and stories.
