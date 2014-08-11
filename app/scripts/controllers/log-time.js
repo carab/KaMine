@@ -7,8 +7,10 @@ angular.module('kamine.app')
     var story = state.story,
         entry = new Entry({
           hours: 1,
-          issue_id: state.story.id,
-          spent_on: $filter('date')(date, 'yyyy-MM-dd')
+          issue_id: story.id,
+          spent_on: $filter('date')(date, 'yyyy-MM-dd'),
+          budget_hours: $filter('toInteger')(story.budget_hours),
+          remaining_hours: $filter('toInteger')(story.remaining_hours)
         });
 
     $scope.story = story;
@@ -28,6 +30,8 @@ angular.module('kamine.app')
           } else {
             Message.addDanger('message.logTimeError');
           }
+        }, function (data) {
+          Message.addDanger('message.logTimeError');
         });
 
         $modalInstance.dismiss('cancel');

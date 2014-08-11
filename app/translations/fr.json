@@ -124,6 +124,8 @@
         "comment": "Commentaire",
         "save": "Valider",
         "cancel": "Annuler",
-        "hours": "heures"
+        "hours": "heures",
+        "remaining": "Temps restant",
+        "budget": "Budget"
     }
 }

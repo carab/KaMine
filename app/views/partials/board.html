@@ -56,11 +56,11 @@
 
                                     <div class="story-middle">
                                         <div class="story-info">
-                                            <span class="story-estimated" tooltip="{{'board.tooltips.estimated' | translate}}">{{story.estimated_hours}}</span>
+                                            <span class="story-estimated" tooltip="{{'board.tooltips.estimated' | translate}}">{{story.estimated_hours | toInteger}}</span>
                                             /
-                                            <span class="story-spent" tooltip="{{'board.tooltips.spent' | translate}}">{{story.spent_hours}}</span>
+                                            <span class="story-spent" tooltip="{{'board.tooltips.spent' | translate}}">{{story.spent_hours | toInteger}}</span>
                                             /
-                                            <span class="story-remaining" tooltip="{{'board.tooltips.remaining' | translate}}">{{story.remaining_hours}}</span>
+                                            <span class="story-remaining" tooltip="{{'board.tooltips.remaining' | translate}}">{{story.remaining_hours | toInteger}}</span>
                                         </div>
                                     </div>
 

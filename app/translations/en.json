@@ -124,6 +124,8 @@
         "comment": "Comment",
         "save": "Save",
         "cancel": "Cancel",
-        "hours": "hours"
+        "hours": "hours",
+        "remaining": "Remaining time",
+        "budget": "Budget time"
     }
 }
